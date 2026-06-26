@@ -1,0 +1,184 @@
+.scheduleSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  padding-bottom: 116px;
+}
+
+.container {
+  width: 930px;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.classBadge {
+  width: 265px;
+  height: 40px;
+  background-color: #233e98;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+}
+
+.navigation {
+  display: flex;
+  margin-left: 19px;
+  gap: 10px;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navBtn img {
+  width: 32px;
+  height: 32px;
+}
+
+.calendarStrip {
+  width: 100%;
+  height: 150px;
+  background-color: #233e98;
+  border-radius: 40px;
+  overflow: hidden; /* Важно для карусели */
+  display: flex;
+}
+
+.carouselWindow {
+  width: 100%;
+  height: 100%;
+}
+
+.carouselTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.daysSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daysWrapper {
+  width: 780px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dayItem {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 60px;
+}
+
+.dayText {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  color: #ffffff;
+  text-transform: uppercase;
+  z-index: 2;
+  position: relative;
+}
+
+.lessonDayText {
+  color: #233e98;
+}
+
+.flaskWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-38%, -62%);
+  width: 120px;
+  height: 120px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.flask {
+  width: 96px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Анимация для списка уроков */
+.detailsWindow {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 45px;
+}
+
+.detailsTrack {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.detailsSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-height: 120px;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 140px;
+}
+
+.lessonItem {
+  display: flex;
+  align-items: center;
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  color: #233e98;
+}
+
+.bullet {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.lessonTime {
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.lessonDivider {
+  margin-right: 8px;
+}
+
+.lessonTitle {
+  font-weight: 400;
+}

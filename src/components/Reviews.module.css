@@ -1,0 +1,112 @@
+.reviewsSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  margin-top: 98px; /* Расстояние от предыдущего 98 */
+  margin-bottom: 134px; /* Расстояние до следующего блока снизу 134 */
+}
+
+.container {
+  width: 930px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px; /* Уменьшено с 112px до 40px */
+}
+
+.title {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  color: #233e98;
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navBtn img {
+  width: 32px;
+  height: 32px;
+}
+
+.carouselWindow {
+  width: 930px;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.carouselWindow:active {
+  cursor: grabbing;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s ease;
+  user-select: none; /* Чтобы текст не выделялся при перетаскивании */
+  align-items: stretch; /* Все карточки в ряду одной высоты */
+}
+
+.carouselTrack.dragging {
+  transition: none; /* Убираем анимацию во время перетаскивания (если реализуем real-time drag) */
+}
+
+.card {
+  flex-shrink: 0;
+  width: 294px; /* Увеличено с 265px до 294px, чтобы 3 карточки идеально вписывались в 930px с учетом gap 24px */
+  min-height: 340px; /* Было height: 340px. Теперь min-height, чтобы плашка росла с текстом */
+  background-color: #BDE3F7;
+  border-radius: 30px; /* Радиус закругления 30 */
+  padding-left: 28px; /* Отсуп слева 28 */
+  padding-right: 28px;
+  padding-top: 34px; /* До звездочек 34 */
+  padding-bottom: 20px; /* Гарантированный отступ снизу */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.starsRow {
+  display: flex;
+  gap: 4px; /* Небольшой зазор между звездами */
+  margin-bottom: 24px; /* Расстояние от блока с звездами 24 */
+}
+
+.star {
+  width: 19px; /* Размер звездочек 19*19 */
+  height: 19px;
+}
+
+.author {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px; /* Алина 16 шрифт */
+  color: #233e98;
+  margin: 0;
+  margin-bottom: 20px; /* Уменьшено до 20 пикселей */
+}
+
+.text {
+  font-family: 'Stolzl Book', sans-serif; /* Шрифт описание stolz book 16 */
+  font-size: 16px;
+  color: #233e98;
+  margin: 0;
+  line-height: 1.2;
+  margin-bottom: 20px; /* Минимальное расстояние до низа блока 20 */
+}

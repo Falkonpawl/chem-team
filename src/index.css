@@ -1,0 +1,81 @@
+@font-face {
+  font-family: "Stolzl Regular";
+  src: url("./assets/fonts/stolzl_regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("./assets/fonts/stolzl_medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("./assets/fonts/stolzl_bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("./assets/fonts/stolzl_book.otf") format("opentype");
+  font-weight: 350;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("./assets/fonts/stolzl_light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stolzl";
+  src: url("./assets/fonts/stolzl_thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Stolzl Regular", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5; /* A light background for the page */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Stolzl Regular", sans-serif;
+  color: #333;
+}
+
+p {
+  font-family: "Stolzl Regular", sans-serif;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Basic reset for links to remove underlines and set color */
+a {
+  text-decoration: none;
+  color: inherit; /* Inherit color from parent */
+}
+
+a:hover {
+  text-decoration: none;
+}

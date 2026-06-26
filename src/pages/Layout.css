@@ -1,0 +1,69 @@
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.main-header {
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.header-content {
+  width: 930px;
+  height: 100px;
+  display: flex;
+  /* Выравниваем элементы по верхней границе, чтобы задать точные отступы margin-top */
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.logo-section {
+  display: flex;
+  margin-top: 35px; /* 35 от верха для логотипа */
+}
+
+.logo {
+  width: 190px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.main-nav {
+  display: flex;
+  margin-left: auto;
+  /* Для навигации используем 26px, так как у ссылок есть padding: 10px.
+     26 + 10 = 36px от верха до самого текста (или верхней границы блока ссылки) */
+  margin-top: 26px;
+}
+
+.nav-link {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  text-decoration: none;
+  margin-right: 30px; /* Расстояние между Расписание и Статьи 30px */
+  padding: 10px;      /* Падинги по 10 */
+  display: block;
+}
+
+.nav-link:last-child {
+  /* Расстояние от слова "Статьи" до кнопки 77px.
+     Учитывая padding 10px, margin-right будет 67px (67 + 10 = 77) */
+  margin-right: 67px;
+}
+
+.header-button {
+  display: flex;
+  margin-top: 40px; /* 40 от верха для кнопки */
+}
+
+.main-content-area {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+}

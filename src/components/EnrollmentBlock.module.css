@@ -1,0 +1,63 @@
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  margin-top: 78px; /* Отступ от предыдущего блока 78 */
+  margin-bottom: 107px; /* и до следующего 107 */
+}
+
+.container {
+  width: 780px; /* Размер блока 780*528 */
+  height: 528px;
+  position: relative;
+}
+
+.microscope {
+  position: absolute;
+  width: 83px;
+  height: 117px;
+  top: 32px;
+  left: 0;
+  transform: rotate(-30deg) scaleX(-1);
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  top: 186px; /* Микроскоп 32+117 = 149. 149 + 37 отступ = 186 */
+  left: 0;
+  z-index: 10;
+}
+
+.title {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 54px;
+  line-height: 1.1;
+  color: #233e98;
+  margin: 0;
+  font-weight: normal;
+}
+
+.buttonWrapper {
+  margin-top: 64px; /* От текста до кнопки 64 */
+}
+
+.logo {
+  position: absolute;
+  width: 265px; /* размер логотипа 265*62 */
+  height: 62px;
+  top: 304px; /* на расстоянии 304 сверху относительно контейнера */
+  left: 190px; /* 190 слева */
+  z-index: 11;
+}
+
+.mascot {
+  position: absolute;
+  width: 268px; /* 268*452 */
+  height: 452px;
+  bottom: 0;
+  right: 0;
+  transform: scaleX(-1);
+  z-index: 5;
+}

@@ -1,0 +1,102 @@
+.teachersSection {
+  width: 100%;
+  min-height: 1887px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding-top: 105px; /* От верхней границы до преподавателей 105 */
+}
+
+.container {
+  width: 930px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  color: #233e98; /* Цвет заголовка секции остается синим на белом фоне */
+  margin: 0;
+  margin-bottom: 42px; /* Расстояние от текста преподователи до блоков 42 пикселя */
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Расстояние между блоками 24 пикселя */
+}
+
+.card {
+  width: 930px;
+  background-color: #233e98;
+  border-radius: 40px;
+  display: flex;
+  padding: 23px; /* Расстояние от краев до фото 23 пикселя */
+  box-sizing: border-box;
+  color: #ffffff; /* Весь текст внутри блока белый */
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.imageWrapper {
+  flex-shrink: 0;
+}
+
+.photo {
+  width: 261px;
+  height: 251px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.infoWrapper {
+  margin-top: 9px; /* 32 (top edge to text) - 23 (padding) = 9px */
+  margin-left: 51px; /* Расстояние до блока текста от фото 51 */
+  flex: 1;
+}
+
+.reverse .infoWrapper {
+  margin-left: 0;
+  /* В случае если текст слева (фото справа):
+     Нужен отступ 74 от края. Padding уже 23. 74 - 23 = 51.
+  */
+  padding-left: 51px;
+  padding-right: 51px; /* Расстояние до фото справа */
+}
+
+.name {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 12px;
+  color: #ffffff; /* Текст заголовков белый */
+}
+
+.experience {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 16px;
+  color: #ffffff; /* Текст белый */
+}
+
+.descriptionList {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #ffffff; /* Текст белый */
+}
+
+.descriptionList li {
+  margin-bottom: 8px;
+}
+
+.descriptionList li:last-child {
+  margin-bottom: 0;
+}

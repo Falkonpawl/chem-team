@@ -1,0 +1,80 @@
+.pageWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentSection {
+  width: 100%;
+  /* Фон Молекула M. По горизонтали на полную ширину, а по вертикали ковром */
+  background-image: url('../assets/Паттерны/Горизонтальные Full HD/Молекула_голубая/Молекула_M_сайт.svg');
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-position: top center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+
+.container {
+  width: 930px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerLabel {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  color: #233e98;
+  text-align: right;
+  margin-top: 60px; /* Отступ сверху 60 пикселей */
+  margin-bottom: 20px; /* После интересно знать отступ 20 */
+  line-height: 1;
+}
+
+.mainTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 54px; /* Заголовки 54 шрифт */
+  color: #233e98;
+  margin: 0;
+  line-height: 1.1;
+  margin-bottom: 52px; /* После заголовков отступ в 52 пикселя */
+}
+
+.articleContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.paragraph {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #000000;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+.subheader {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px; /* Подзаголовки шрифт 32 */
+  color: #233e98;
+  margin: 0;
+  margin-top: 40px; /* Отступ сверху и снизу по 40 */
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+.articleImage {
+  width: 100%;
+  max-width: 930px;
+  height: auto;
+  border-radius: 40px;
+  margin: 0;
+  margin-top: 60px; /* У картинок отступ по 60 сверху и снизу */
+  margin-bottom: 60px;
+  object-fit: cover;
+}

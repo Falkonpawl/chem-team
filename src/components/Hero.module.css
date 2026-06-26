@@ -1,0 +1,100 @@
+.hero {
+  width: 100%;
+  height: 557px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Stolzl Regular', sans-serif;
+}
+
+.container {
+  width: 930px;
+  height: 100%;
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: 'Stolzl', sans-serif; /* Stolzl Book */
+  font-weight: 350;
+  font-size: 96px;
+  line-height: 0.9;
+  color: #233E98;
+  text-align: right;
+  margin: 0;
+  z-index: 10;
+}
+
+.leftContent {
+  position: absolute;
+  top: 147px; /* Расстояние от успейте записаться до верха 147 */
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+.subtitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #233E98;
+  margin: 0;
+  margin-bottom: 60px; /* От успейте записаться до инпутов 60 */
+  line-height: 1.1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Между импутами 16 */
+}
+
+.input {
+  width: 255px; /* Импуты по размерам такая же как кнопка */
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(35, 62, 152, 0.2); /* Цвет 233E98 с 20% прозрачности */
+  padding: 0 20px;
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  color: #233E98;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #233E98;
+}
+
+.buttonWrapper {
+  margin-top: 16px; /* 16 (gap) + 16 (margin) = 32px до кнопки */
+}
+
+.rightContent {
+  position: absolute;
+  top: 200px; /* Сразу после слов онлайн школа... (примерная высота заголовка) */
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Посетите первое пробное прожаты справа */
+  z-index: 5;
+}
+
+.image {
+  width: 657px; /* Размер картинки 657*290 */
+  height: 290px;
+  object-fit: contain;
+}
+
+.imageCaption {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  color: #233E98;
+  margin-top: 16px; /* РАсстояние от картики 16px */
+  text-align: right; /* Прожаты справа */
+  line-height: 1.2;
+}

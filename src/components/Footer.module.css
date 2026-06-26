@@ -1,0 +1,156 @@
+.footer {
+  width: 100%;
+  height: 590px;
+  background-color: #233E98;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-family: 'Stolzl Regular', sans-serif;
+}
+
+.container {
+  width: 930px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.upButton {
+  position: absolute;
+  top: 62px;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.upButton img {
+  width: 40px;
+  height: 40px;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Остались вопросы прижато к левому краю */
+  width: 550px;
+  margin-top: 106px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: normal;
+  color: #FFFFFF;
+  margin: 0;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #FFFFFF;
+  margin: 0;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.input {
+  width: 550px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  padding: 0 20px;
+  font-size: 20px;
+  font-family: 'Stolzl Regular', sans-serif;
+  color: #233E98;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #233E98;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 100%;
+}
+
+.telegramIcon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.bottomSection {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.logoSide {
+  width: 190px;
+}
+
+.logo {
+  width: 190px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.navSide {
+  position: absolute;
+  /* Центр кнопки отправить находится на 612px от левого края контента 930px */
+  left: 612px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start; /* Чтобы буквы начинались с одной линии */
+}
+
+.footerNavLink {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.socialSide {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.socialLink img {
+  width: 24px;
+  height: 24px;
+}

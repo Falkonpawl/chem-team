@@ -1,0 +1,107 @@
+.section {
+  width: 100%;
+  background-color: #233e98;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding-bottom: 85px; /* Adding some padding at the bottom */
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/Паттерны/Горизонтальные Full HD/Сон Менделеева/Сон Менделеева_M_сайт.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.container {
+  width: 930px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  color: #ffffff;
+  text-align: right;
+  margin: 0;
+  margin-top: 60px; /* Отсуп до слов материалы доверха 60 */
+}
+
+.list {
+  margin-top: 40px; /* После 40 (идут плашки) */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Между плашками отступ 20 пикслей */
+}
+
+.card {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.whiteCard {
+  height: 40px; /* плашка высотой 40 */
+  background-color: #ffffff; /* белые */
+  border-radius: 100px; /* закругление 100 */
+  color: #233e98; /* Текст в случае белой плашки синий (исходя из изображения) */
+}
+
+.transparentCard {
+  height: 100px; /* плашка высотой 100 пикслей */
+  background-color: rgba(255, 255, 255, 0.2); /* белая с прозрачностью 20 */
+  border-radius: 30px; /* Закругление 30 */
+  color: #ffffff; /* в случае прозрачной белый (согласно логике контраста) */
+}
+
+.cardTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+}
+
+.arrowWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.whiteCard .arrowWrapper {
+  right: 30px; /* справа распологается на расстоянии в 30 пикслей */
+  top: 50%;
+  transform: translateY(-50%); /* посередине */
+}
+
+.transparentCard .arrowWrapper {
+  right: 30px; /* справа тоже 30 пикслей */
+  bottom: 30px; /* Внизу расстоянии 30 пикслей */
+}
+
+.whiteCard .cardTitle {
+  color: #233e98;
+}
+
+.transparentCard .cardTitle {
+  color: #ffffff;
+}

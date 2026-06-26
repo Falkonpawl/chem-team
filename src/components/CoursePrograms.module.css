@@ -1,0 +1,131 @@
+.programsSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.container {
+  width: 930px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  color: #233e98;
+  margin: 0;
+  margin-top: 48px;
+  text-align: right;
+  font-weight: normal; /* Не выделять жирным */
+}
+
+.blocksList {
+  margin-top: 40px;
+}
+
+.classBlock {
+  margin-bottom: 85px;
+}
+
+.classBlock:last-child {
+  margin-bottom: 120px;
+}
+
+.blockHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.blockTitle, .blockSubtitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  color: #233e98;
+  margin: 0;
+  line-height: 1.1;
+  font-weight: normal;
+}
+
+.navigation {
+  display: flex;
+  gap: 10px;
+  margin-top: 3px;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navBtn img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Настройка карусели */
+.carouselWindow {
+  width: 930px;
+  overflow: hidden;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease;
+  align-items: stretch; /* Убеждаемся, что все карточки в ряду тянутся по высоте самой высокой */
+}
+
+.card {
+  flex-shrink: 0;
+  width: 455px;
+  min-height: 230px; /* Было height: 230px. Теперь min-height для возможности роста */
+  background-color: #BDE3F7;
+  border-radius: 30px;
+  padding: 19px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 20px;
+  color: #233e98;
+  margin: 0;
+  font-weight: normal;
+}
+
+.cardListWrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center; /* Текст центрируется от оставшегося места */
+  /* margin-top: 30px;  Убрал отступ после заглавия */
+}
+
+.moduleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 14px;
+  color: #233e98;
+  line-height: 1.4;
+  margin-bottom: 10px; /* Уменьшено с 20px до 10px для лучшей вместимости */
+}
+
+.listItem:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,105 @@
+.section {
+  width: 100%;
+  min-height: 800px;
+  background-color: #233e98;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/Паттерны/Горизонтальные Full HD/Сон Менделеева/Сон Менделеева_M_сайт.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1; /* Прозрачность 10% */
+  pointer-events: none;
+}
+
+.container {
+  width: 930px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topTitle {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  text-align: right;
+  margin-top: 54px; /* Формат обучения 54 пикселя от верха */
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+.content {
+  margin-top: 20px; /* Space after top title */
+  align-self: flex-start; /* Content starts from the left */
+  width: 100%;
+}
+
+.block {
+  margin-bottom: 44px; /* От списка до следующего блока 44 пикселя */
+}
+
+.block:last-child {
+  margin-bottom: 0;
+}
+
+.title {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 32px; /* Все заголовки 32 */
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 24px; /* расстояние от заголовка до текста 24px */
+  color: #ffffff;
+}
+
+.text {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px; /* Остальные по 16 */
+  margin: 0;
+  margin-bottom: 16px; /* От слов мы предлагает 16 вниз (к списку) */
+  color: #ffffff;
+}
+
+.list {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+  color: #ffffff;
+}
+
+.list li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+.buttonWrapper {
+  margin-top: auto;
+  margin-bottom: 80px; /* Оставить заявку 80 px от низа */
+  display: flex;
+  justify-content: flex-end; /* Кнопка справа */
+}

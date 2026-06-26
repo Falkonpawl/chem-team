@@ -1,0 +1,78 @@
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  margin-top: 38px; /* Отступ перед этим блоком 38 */
+}
+
+.block {
+  width: 760px; /* Сам блок в ширину 760 */
+  height: 452px; /* и в высоту 452 */
+  position: relative;
+  /* background-color: #f9f9f9;  Для отладки можно раскомментировать */
+}
+
+.microscope {
+  position: absolute;
+  width: 83px; /* Размер 83*117 */
+  height: 117px;
+  top: 32px; /* Сверху 32 */
+  left: 0; /* Слева он расположен с края блока */
+  transform: rotate(-30deg) scaleX(-1); /* Повернут на -150 и отражен по вертикали */
+}
+
+.atom {
+  position: absolute;
+  width: 74px; /* Размер 74*74 */
+  height: 74px;
+  top: 0; /* Сверху расположен около самого верха */
+  left: 382px; /* Слева отсуп 382 */
+  transform: rotate(132deg); /* убран минус */
+}
+
+.mascot {
+  position: absolute;
+  width: 227px; /* размеры 227*394 */
+  height: 394px;
+  top: 22px; /* Сверху отсуп 22 */
+  right: 0; /* Самого права */
+}
+
+.flask {
+  position: absolute;
+  width: 57px; /* Размеры 57*92 */
+  height: 92px;
+  top: 345px; /* Отступ сверху 345 */
+  left: 400px; /* слева 400 */
+  transform: rotate(32deg); /* убран минус */
+}
+
+.content {
+  position: absolute;
+  top: 202px; /* С верху самого отступ 202 */
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 54px; /* Размер 54 */
+  font-weight: normal; /* не жирный */
+  color: #233e98;
+  margin: 0;
+  line-height: 1;
+}
+
+.subtext {
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  color: #233e98;
+  margin: 0;
+  margin-top: 24px; /* Далее к тексту отступ 24 */
+}
+
+.buttonWrapper {
+  margin-top: 28px; /* К кнопке оттуп 28 */
+}

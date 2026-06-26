@@ -1,0 +1,38 @@
+.button {
+  width: 255px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Stolzl Regular', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.button.primary {
+  background-color: #233E98;
+  color: #FFFFFF;
+}
+
+.button.primary:hover {
+  background-color: #FFFFFF;
+  color: #233E98;
+  border: 1px solid #233E98;
+}
+
+.button.secondary {
+  background-color: #FFFFFF;
+  color: #233E98;
+  border: 1px solid #233E98;
+}
+
+.button.secondary:hover {
+  background-color: #233E98;
+  color: #FFFFFF;
+}
