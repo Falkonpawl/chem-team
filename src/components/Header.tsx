@@ -3,8 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import Button from './Button';
 import styles from './Header.module.css';
 import logo from '../assets/Логотип/Основной/Логтип_RGB_сайт.svg';
+import { useModal } from '../context/ModalContext';
 
 const Header: React.FC = () => {
+  const { openModal } = useModal();
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
@@ -26,7 +29,7 @@ const Header: React.FC = () => {
           </NavLink>
         </nav>
         <div className={styles.buttonWrapper}>
-          <Button text="Оставить заявку" type="primary" />
+          <Button text="Оставить заявку" type="primary" onClick={openModal} />
         </div>
       </div>
     </header>

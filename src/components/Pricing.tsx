@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Pricing.module.css';
 import Button from './Button';
+import { useModal } from '../context/ModalContext';
 
 import mascot1 from '../assets/Маскот/Стоимость/Стоимость маскот 1.png';
 import mascot2 from '../assets/Маскот/Стоимость/Стоимость маскот 2.png';
@@ -20,11 +21,12 @@ interface PricingCardProps {
   priceLabel2?: string;
   hasBadges?: boolean;
   tightSpacing?: boolean;
+  onApply?: () => void;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
   title, priceLabel, priceValue, features, mascot, mascotSize, mascotRight,
-  isDoublePrice, priceLabel2, priceValue2, hasBadges, tightSpacing
+  isDoublePrice, priceLabel2, priceValue2, hasBadges, tightSpacing, onApply
 }) => {
   return (
     <div className={`${styles.card} ${tightSpacing ? styles.firstCard : ''}`}>
@@ -55,7 +57,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         </ul>
 
         <div className={styles.bottomRow}>
-          <Button text="Оставить заявку" type="secondary" />
+          <Button text="Оставить заявку" type="secondary" onClick={onApply} />
           {hasBadges && (
             <div className={styles.badgesWrapper}>
               <div className={styles.badge}>Онлайн</div>
@@ -80,6 +82,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
 };
 
 const Pricing: React.FC = () => {
+  const { openModal } = useModal();
   const cards: PricingCardProps[] = [
     {
       title: <>Групповые занятия 11 класс<br />Подготовка к ЦТ и ЦЭ</>,
@@ -94,7 +97,8 @@ const Pricing: React.FC = () => {
       mascot: mascot1,
       mascotSize: { width: 425, height: 333 },
       mascotRight: 28,
-      tightSpacing: true
+      tightSpacing: true,
+      onApply: openModal
     },
     {
       title: "Групповые занятия 7-10 классы",
@@ -108,7 +112,8 @@ const Pricing: React.FC = () => {
       ],
       mascot: mascot2,
       mascotSize: { width: 546, height: 271 },
-      mascotRight: 36
+      mascotRight: 36,
+      onApply: openModal
     },
     {
       title: "Сплит занятия",
@@ -122,7 +127,8 @@ const Pricing: React.FC = () => {
       ],
       mascot: mascot3,
       mascotSize: { width: 485, height: 312 },
-      mascotRight: 36
+      mascotRight: 36,
+      onApply: openModal
     },
     {
       title: "Индивидуальные занятия",
@@ -140,7 +146,8 @@ const Pricing: React.FC = () => {
       mascot: mascot4,
       mascotSize: { width: 297, height: 317 },
       mascotRight: 56,
-      hasBadges: true
+      hasBadges: true,
+      onApply: openModal
     }
   ];
 

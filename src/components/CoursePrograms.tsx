@@ -28,7 +28,10 @@ const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
           <button
             className={styles.navBtn}
             onClick={handlePrev}
-            style={{ opacity: currentIndex === 0 ? 0.3 : 1, cursor: currentIndex === 0 ? 'default' : 'pointer' }}
+            style={{
+              opacity: currentIndex === 0 ? 0.3 : undefined,
+              cursor: currentIndex === 0 ? 'default' : 'pointer'
+            }}
           >
             <img src={leftBtn} alt="Previous" />
           </button>
@@ -36,7 +39,7 @@ const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
             className={styles.navBtn}
             onClick={handleNext}
             style={{
-              opacity: currentIndex >= data.modules.length - 2 ? 0.3 : 1,
+              opacity: currentIndex >= data.modules.length - 2 ? 0.3 : undefined,
               cursor: currentIndex >= data.modules.length - 2 ? 'default' : 'pointer'
             }}
           >

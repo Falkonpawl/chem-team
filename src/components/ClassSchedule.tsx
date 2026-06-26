@@ -33,14 +33,20 @@ const ClassSchedule: React.FC = () => {
             <button
               className={styles.navBtn}
               onClick={handleNext}
-              style={{ opacity: currentIndex === maxIdx ? 0.3 : 1, cursor: currentIndex === maxIdx ? 'default' : 'pointer' }}
+              style={{
+                opacity: currentIndex === maxIdx ? 0.3 : undefined,
+                cursor: currentIndex === maxIdx ? 'default' : 'pointer'
+              }}
             >
               <img src={leftBtn} alt="Decrease Class" />
             </button>
             <button
               className={styles.navBtn}
               onClick={handlePrev}
-              style={{ opacity: currentIndex === 0 ? 0.3 : 1, cursor: currentIndex === 0 ? 'default' : 'pointer' }}
+              style={{
+                opacity: currentIndex === 0 ? 0.3 : undefined,
+                cursor: currentIndex === 0 ? 'default' : 'pointer'
+              }}
             >
               <img src={rightBtn} alt="Increase Class" />
             </button>

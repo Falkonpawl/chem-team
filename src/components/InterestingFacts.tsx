@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './InterestingFacts.module.css';
 import Button from './Button';
 
@@ -8,6 +9,8 @@ import mascot from '../assets/Маскот/Добродетельный хими
 import flask from '../assets/Артефакты/Цветные/Круглодонная колба.svg';
 
 const InterestingFacts: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.section}>
       <div className={styles.block}>
@@ -38,7 +41,14 @@ const InterestingFacts: React.FC = () => {
             Переходите по ссылке узнать кто раскрашивает фейерверки
           </p>
           <div className={styles.buttonWrapper}>
-            <Button text="Переходите к статьям" type="primary" />
+            <Button
+              text="Переходите к статьям"
+              type="primary"
+              onClick={() => {
+                navigate('/articles');
+                window.scrollTo(0, 0);
+              }}
+            />
           </div>
         </div>
       </div>

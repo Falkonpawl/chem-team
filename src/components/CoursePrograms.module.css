@@ -67,6 +67,10 @@
   padding: 0;
 }
 
+.navBtn:hover {
+  opacity: 0.8;
+}
+
 .navBtn img {
   width: 32px;
   height: 32px;

@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './TrainingFormat.module.css';
 import Button from './Button';
+import { useModal } from '../context/ModalContext';
 
 const TrainingFormat: React.FC = () => {
+  const { openModal } = useModal();
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -39,7 +42,7 @@ const TrainingFormat: React.FC = () => {
         </div>
 
         <div className={styles.buttonWrapper}>
-          <Button text="Оставить заявку" type="secondary" />
+          <Button text="Оставить заявку" type="secondary" onClick={openModal} />
         </div>
       </div>
     </section>

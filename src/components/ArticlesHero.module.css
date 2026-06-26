@@ -30,6 +30,10 @@
   z-index: 30;
 }
 
+.backButton:hover {
+  opacity: 0.8;
+}
+
 .title {
   position: absolute;
   top: 0;
@@ -80,6 +84,7 @@
   font-size: 16px;
   color: #233E98;
   box-sizing: border-box;
+  outline: none;
 }
 
 .input::placeholder {

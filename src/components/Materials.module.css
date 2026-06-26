@@ -56,6 +56,14 @@
   padding: 0 30px;
 }
 
+.whiteCard:hover {
+  opacity: 0.5;
+}
+
+.transparentCard:hover {
+  opacity: 0.5;
+}
+
 .whiteCard {
   height: 40px; /* плашка высотой 40 */
   background-color: #ffffff; /* белые */

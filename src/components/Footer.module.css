@@ -28,6 +28,10 @@
   padding: 0;
 }
 
+.upButton:hover {
+  opacity: 0.8;
+}
+
 .upButton img {
   width: 40px;
   height: 40px;
@@ -76,6 +80,7 @@
   font-family: 'Stolzl Regular', sans-serif;
   color: #233E98;
   box-sizing: border-box;
+  outline: none;
 }
 
 .input::placeholder {
@@ -94,6 +99,10 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+}
+
+.telegramIcon:hover {
+  opacity: 0.8;
 }
 
 .bottomSection {
@@ -133,6 +142,10 @@
   white-space: nowrap;
 }
 
+.footerNavLink:hover {
+  opacity: 0.5;
+}
+
 .socialSide {
   margin-left: auto;
   display: flex;
@@ -148,6 +161,10 @@
   color: #FFFFFF;
   text-decoration: none;
   font-size: 16px;
+}
+
+.socialLink:hover {
+  opacity: 0.5;
 }
 
 .socialLink img {

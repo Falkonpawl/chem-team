@@ -4,8 +4,11 @@ import Button from './Button';
 import logo from '../assets/Логотип/Основной/Логтип_RGB_сайт.svg';
 import mascot from '../assets/Маскот/Бурный учёный.svg';
 import microscope from '../assets/Артефакты/Цветные/Микроскоп.svg';
+import { useModal } from '../context/ModalContext';
 
 const EnrollmentBlock: React.FC = () => {
+  const { openModal } = useModal();
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -19,7 +22,7 @@ const EnrollmentBlock: React.FC = () => {
           </h2>
 
           <div className={styles.buttonWrapper}>
-            <Button text="Оставить заявку" type="primary" />
+            <Button text="Оставить заявку" type="primary" onClick={openModal} />
           </div>
         </div>
 

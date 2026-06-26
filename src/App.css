@@ -81,7 +81,7 @@
 }
 
 .button.primary:hover {
-  background-color: #1a2f70;
+  opacity: 0.8;
 }
 
 .button.secondary {
@@ -91,5 +91,5 @@
 }
 
 .button.secondary:hover {
-  background-color: #f0f0f0;
+  opacity: 0.5;
 }
