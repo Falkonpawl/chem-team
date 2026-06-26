@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './Pricing.module.css';
 import Button from './Button';
 
-import mascot1 from '../assets/Маскот/стоимость/Стоимость маскот 1.png';
-import mascot2 from '../assets/Маскот/стоимость/Стоимость маскот 2.png';
-import mascot3 from '../assets/Маскот/стоимость/Стоимость маскот 3.png';
-import mascot4 from '../assets/Маскот/стоимость/Стоимость маскот 4.png';
+import mascot1 from '../assets/Маскот/Стоимость/Стоимость маскот 1.png';
+import mascot2 from '../assets/Маскот/Стоимость/Стоимость маскот 2.png';
+import mascot3 from '../assets/Маскот/Стоимость/Стоимость маскот 3.png';
+import mascot4 from '../assets/Маскот/Стоимость/Стоимость маскот 4.png';
 
 interface PricingCardProps {
   title: React.ReactNode;
