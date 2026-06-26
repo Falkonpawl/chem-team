@@ -32,7 +32,7 @@ const Reviews: React.FC = () => {
     setStartX(pageX);
   };
 
-  const onDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+  const onDragMove = () => {
     if (!isDragging) return;
     // Walk is removed because we snap only on drag end for this implementation
   };
