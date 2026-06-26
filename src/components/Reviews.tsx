@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './Reviews.module.css';
 import { reviewsData } from '../data/reviewsData';
 import leftBtn from '../assets/icons/leftbutton.svg';
@@ -9,7 +9,6 @@ const Reviews: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const cardWidth = 294;
@@ -31,16 +30,11 @@ const Reviews: React.FC = () => {
     setIsDragging(true);
     const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
     setStartX(pageX);
-    setScrollLeft(currentIndex * step);
   };
 
   const onDragMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!isDragging) return;
-    const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
-    const walk = (startX - pageX);
-
-    // We don't actually move the track during drag for simplicity in this specific "step-based" carousel
-    // Instead we wait for drag end to snap to next/prev
+    // Walk is removed because we snap only on drag end for this implementation
   };
 
   const onDragEnd = (e: React.MouseEvent | React.TouchEvent | React.PointerEvent) => {
