@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './EnrollmentModal.module.css';
 import moleculeIcon from '../assets/Логотип/Знак/Знак.svg';
+import { useModal } from '../context/ModalContext';
+import { sendEmail } from '../services/emailService';
 
 interface EnrollmentModalProps {
   isOpen: boolean;
@@ -8,6 +10,24 @@ interface EnrollmentModalProps {
 }
 
 const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) => {
+  const { modalSource, modalChoice } = useModal();
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('+375');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  const [nameError, setNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setStatus('idle');
+      setName('');
+      setPhone('+375');
+      setNameError(false);
+      setPhoneError(false);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -15,6 +35,59 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
       onClose();
     }
   };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value.slice(0, 20));
+    setNameError(false);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    if (value.startsWith('+')) {
+      const rest = value.substring(1).replace(/\D/g, '');
+      value = '+' + rest;
+    } else {
+      value = '+' + value.replace(/\D/g, '');
+    }
+    if (!value.startsWith('+375')) value = '+375';
+    if (value.length <= 13) setPhone(value);
+    setPhoneError(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    let hasError = false;
+
+    if (name.trim().length === 0) {
+      setNameError(true);
+      hasError = true;
+    }
+    if (phone.length < 13) {
+      setPhoneError(true);
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    setStatus('sending');
+
+    const success = await sendEmail({
+      name,
+      phone,
+      course: modalSource,
+      format: modalChoice,
+      target_email: 'sokolowskipawel55@gmail.com'
+    });
+
+    if (success) {
+      setStatus('sent');
+    } else {
+      setStatus('error');
+      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
+    }
+  };
+
+  const isSent = status === 'sent';
 
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
@@ -27,19 +100,29 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
           Посетите первое пробное занятие<br />бесплатно
         </p>
 
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Имя"
-            className={styles.input}
+            className={`${styles.input} ${nameError ? styles.inputError : ''}`}
+            value={name}
+            onChange={handleNameChange}
+            disabled={isSent || status === 'sending'}
           />
           <input
             type="tel"
             placeholder="+375"
-            className={styles.input}
+            className={`${styles.input} ${phoneError ? styles.inputError : ''}`}
+            value={phone}
+            onChange={handlePhoneChange}
+            disabled={isSent || status === 'sending'}
           />
-          <button type="submit" className={styles.submitBtn}>
-            Оставить заявку
+          <button
+            type="submit"
+            className={`${styles.submitBtn} ${isSent ? styles.sentBtn : ''}`}
+            disabled={status !== 'idle'}
+          >
+            {isSent ? 'Отправлено' : (status === 'sending' ? 'Отправка...' : 'Оставить заявку')}
           </button>
         </form>
       </div>

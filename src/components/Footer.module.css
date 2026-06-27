@@ -74,13 +74,24 @@
   width: 550px;
   height: 40px;
   border-radius: 20px;
-  border: none;
+  border: 2px solid transparent;
   padding: 0 20px;
   font-size: 20px;
   font-family: 'Stolzl Regular', sans-serif;
   color: #233E98;
   box-sizing: border-box;
   outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.inputError {
+  border-color: #CA2E27 !important;
+  color: #CA2E27 !important;
+}
+
+.inputError::placeholder {
+  color: #CA2E27 !important;
 }
 
 .input::placeholder {

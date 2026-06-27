@@ -85,6 +85,16 @@
   color: #233E98;
   box-sizing: border-box;
   outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.inputError {
+  background-color: rgba(202, 46, 39, 0.2) !important;
+  color: #CA2E27 !important;
+}
+
+.inputError::placeholder {
+  color: #CA2E27 !important;
 }
 
 .input::placeholder {

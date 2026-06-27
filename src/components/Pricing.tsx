@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Pricing.module.css';
 import Button from './Button';
 import { useModal } from '../context/ModalContext';
@@ -9,7 +9,8 @@ import mascot3 from '../assets/Маскот/Стоимость/Стоимост�
 import mascot4 from '../assets/Маскот/Стоимость/Стоимость маскот 4.png';
 
 interface PricingCardProps {
-  title: React.ReactNode;
+  title: string | React.ReactNode;
+  titleString: string; //Для почты
   priceLabel: string;
   priceValue: string;
   features: string[];
@@ -21,13 +22,19 @@ interface PricingCardProps {
   priceLabel2?: string;
   hasBadges?: boolean;
   tightSpacing?: boolean;
-  onApply?: () => void;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
-  title, priceLabel, priceValue, features, mascot, mascotSize, mascotRight,
-  isDoublePrice, priceLabel2, priceValue2, hasBadges, tightSpacing, onApply
+  title, titleString, priceLabel, priceValue, features, mascot, mascotSize, mascotRight,
+  isDoublePrice, priceLabel2, priceValue2, hasBadges, tightSpacing
 }) => {
+  const { openModal } = useModal();
+  const [selectedFormat, setSelectedFormat] = useState<string>('');
+
+  const handleApply = () => {
+    openModal(titleString, selectedFormat);
+  };
+
   return (
     <div className={`${styles.card} ${tightSpacing ? styles.firstCard : ''}`}>
       <div className={styles.contentLeft}>
@@ -57,11 +64,21 @@ const PricingCard: React.FC<PricingCardProps> = ({
         </ul>
 
         <div className={styles.bottomRow}>
-          <Button text="Оставить заявку" type="secondary" onClick={onApply} />
+          <Button text="Оставить заявку" type="secondary" onClick={handleApply} />
           {hasBadges && (
             <div className={styles.badgesWrapper}>
-              <div className={styles.badge}>Онлайн</div>
-              <div className={styles.badge}>Офлайн</div>
+              <div
+                className={`${styles.badge} ${selectedFormat === 'Онлайн' ? styles.badgeActive : ''}`}
+                onClick={() => setSelectedFormat(selectedFormat === 'Онлайн' ? '' : 'Онлайн')}
+              >
+                Онлайн
+              </div>
+              <div
+                className={`${styles.badge} ${selectedFormat === 'Офлайн' ? styles.badgeActive : ''}`}
+                onClick={() => setSelectedFormat(selectedFormat === 'Офлайн' ? '' : 'Офлайн')}
+              >
+                Офлайн
+              </div>
             </div>
           )}
         </div>
@@ -82,10 +99,10 @@ const PricingCard: React.FC<PricingCardProps> = ({
 };
 
 const Pricing: React.FC = () => {
-  const { openModal } = useModal();
   const cards: PricingCardProps[] = [
     {
       title: <>Групповые занятия 11 класс<br />Подготовка к ЦТ и ЦЭ</>,
+      titleString: "Групповые занятия 11 класс (Подготовка к ЦТ и ЦЭ)",
       priceLabel: "Стоимость одного занятия",
       priceValue: "27 BYN",
       features: [
@@ -97,11 +114,11 @@ const Pricing: React.FC = () => {
       mascot: mascot1,
       mascotSize: { width: 425, height: 333 },
       mascotRight: 28,
-      tightSpacing: true,
-      onApply: openModal
+      tightSpacing: true
     },
     {
       title: "Групповые занятия 7-10 классы",
+      titleString: "Групповые занятия 7-10 классы",
       priceLabel: "Стоимость одного занятия",
       priceValue: "23 BYN",
       features: [
@@ -112,11 +129,11 @@ const Pricing: React.FC = () => {
       ],
       mascot: mascot2,
       mascotSize: { width: 546, height: 271 },
-      mascotRight: 36,
-      onApply: openModal
+      mascotRight: 36
     },
     {
       title: "Сплит занятия",
+      titleString: "Сплит занятия",
       priceLabel: "Стоимость одного занятия с человека",
       priceValue: "30 BYN",
       features: [
@@ -127,11 +144,11 @@ const Pricing: React.FC = () => {
       ],
       mascot: mascot3,
       mascotSize: { width: 485, height: 312 },
-      mascotRight: 36,
-      onApply: openModal
+      mascotRight: 36
     },
     {
       title: "Индивидуальные занятия",
+      titleString: "Индивидуальные занятия",
       priceLabel: "Стоимость разового занятия",
       priceValue: "55 BYN",
       isDoublePrice: true,
@@ -146,8 +163,7 @@ const Pricing: React.FC = () => {
       mascot: mascot4,
       mascotSize: { width: 297, height: 317 },
       mascotRight: 56,
-      hasBadges: true,
-      onApply: openModal
+      hasBadges: true
     }
   ];
 

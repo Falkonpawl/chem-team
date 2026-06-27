@@ -133,14 +133,25 @@
 .badge {
   width: 110px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5); /* Стандарт: прозрачность 50% */
   border: none;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: #ffffff; /* Текст белый без прозрачности */
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.badge:hover:not(.badgeActive) {
+  background-color: rgba(255, 255, 255, 0.2); /* При наведении: прозрачность 20% (alpha 0.2) */
+}
+
+.badgeActive {
+  background-color: #ffffff !important; /* Без прозрачности */
+  color: #233e98 !important; /* Текст синий */
 }
 
 .mascot {

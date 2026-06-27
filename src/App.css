@@ -72,16 +72,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, opacity 0.3s, border-color 0.3s;
 }
 
 .button.primary {
   background-color: #233E98;
   color: #ffffff;
+  border: none;
 }
 
-.button.primary:hover {
-  opacity: 0.8;
+.button.primary:hover:not(:disabled) {
+  opacity: 0.8; /* 20% прозрачности = 80% непрозрачности */
+  background-color: #233E98;
+  color: #ffffff;
+}
+
+.button.primary:disabled:not(.sent) {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.button.primary.sent {
+  background-color: rgba(35, 62, 152, 0.2); /* Прозрачность 80% (alpha 0.2) */
+  color: #233e98;
+  opacity: 1;
+  cursor: default;
 }
 
 .button.secondary {
@@ -90,6 +105,17 @@
   border: 1px solid #233E98;
 }
 
-.button.secondary:hover {
+.button.secondary:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.5); /* Фон белый с 50% прозрачностью */
+  color: #ffffff; /* Текст белый без прозрачности */
+  border: 1px solid transparent; /* Рамка становится прозрачной */
+  opacity: 1;
+}
+
+.button.secondary.sent {
   opacity: 0.5;
+  color: #233E98;
+  background-color: #ffffff;
+  border: 1px solid #233E98;
+  cursor: default;
 }
