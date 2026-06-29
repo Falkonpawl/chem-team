@@ -3,7 +3,6 @@ import styles from './Reviews.module.css';
 import { reviewsData } from '../data/reviewsData';
 import leftBtn from '../assets/icons/leftbutton.svg';
 import rightBtn from '../assets/icons/rightbutton.svg';
-import starIcon from '../assets/icons/Star.svg';
 
 const Reviews: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -99,11 +98,6 @@ const Reviews: React.FC = () => {
           >
             {reviewsData.map((review) => (
               <div key={review.id} className={styles.card}>
-                <div className={styles.starsRow}>
-                  {[...Array(5)].map((_, i) => (
-                    <img key={i} src={starIcon} alt="star" className={styles.star} />
-                  ))}
-                </div>
                 <h3 className={styles.author}>{review.author}</h3>
                 <p className={styles.text}>{review.text}</p>
               </div>

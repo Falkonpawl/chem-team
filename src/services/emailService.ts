@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4vsIz-JhabHjQyIG5v5ZRivSksowCQpDK8z9eegu0JazaVrH_eP9ZMyJX-roKRdMXBQ/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzvJpojyOfEJd6x0qM0l1vA885TZ5lr6zXYRxs64RfqqhQQFALrXhwZROmlG5jfXhJkQQ/exec';
 
 export interface EmailData {
   name?: string;

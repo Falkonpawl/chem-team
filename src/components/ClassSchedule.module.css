@@ -15,6 +15,7 @@
 .controls {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -34,7 +35,6 @@
 
 .navigation {
   display: flex;
-  margin-left: 19px;
   gap: 10px;
 }
 

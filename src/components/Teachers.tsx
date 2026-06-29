@@ -39,7 +39,7 @@ const TeacherCard: React.FC<TeacherProps> = ({ name, experience, description, im
 const Teachers: React.FC = () => {
   const teachersData: TeacherProps[] = [
     {
-      name: "София Васильевна",
+      name: "Софья Васильевна",
       experience: "Опыт работы: 5 лет",
       description: [
         "Курсы подготовки к ЦТ «ТурбоЦТ»",

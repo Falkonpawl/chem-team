@@ -80,22 +80,11 @@
   border-radius: 30px; /* Радиус закругления 30 */
   padding-left: 28px; /* Отсуп слева 28 */
   padding-right: 28px;
-  padding-top: 34px; /* До звездочек 34 */
+  padding-top: 34px; /* Теперь это верхний отступ до имени автора */
   padding-bottom: 20px; /* Гарантированный отступ снизу */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-}
-
-.starsRow {
-  display: flex;
-  gap: 4px; /* Небольшой зазор между звездами */
-  margin-bottom: 24px; /* Расстояние от блока с звездами 24 */
-}
-
-.star {
-  width: 19px; /* Размер звездочек 19*19 */
-  height: 19px;
 }
 
 .author {
