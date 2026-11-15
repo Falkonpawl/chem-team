@@ -36,9 +36,11 @@ const InterestingFacts: React.FC = () => {
         />
 
         <div className={styles.content}>
-          <h2 className={styles.title}>Интересно знать!</h2>
+          <h2 className={styles.title}>
+            Интересно<br className={styles.mobileOnlyBr} /> знать!
+          </h2>
           <p className={styles.subtext}>
-            Переходите по ссылке узнать кто раскрашивает фейерверки
+            Переходите по ссылке узнать<br className={styles.mobileOnlyBr} /> кто раскрашивает фейерверки
           </p>
           <div className={styles.buttonWrapper}>
             <Button

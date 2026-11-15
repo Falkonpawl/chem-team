@@ -24,6 +24,10 @@
   text-align: right;
 }
 
+.mobileOnlyBr {
+  display: none;
+}
+
 .cardsList {
   margin-top: 40px;
   display: flex;
@@ -38,18 +42,11 @@
   border-radius: 40px;
   position: relative;
   box-sizing: border-box;
-  padding-top: 35px;
-  padding-left: 62px;
+  padding: 35px 0 25px 62px;
   color: #ffffff;
   overflow: hidden;
-}
-
-.contentLeft {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 5;
 }
 
 .cardTitle {
@@ -59,16 +56,27 @@
   margin: 0;
   line-height: 1.1;
   color: #ffffff;
+  position: relative;
+  z-index: 5;
 }
 
 .priceSection {
   display: flex;
   flex-direction: column;
   margin-top: 16px;
+  position: relative;
+  z-index: 5;
 }
 
-.priceContainer {
+.singlePriceContainer {
   display: flex;
+  flex-direction: column;
+}
+
+.doublePriceContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 36px;
 }
 
 .priceColumn {
@@ -92,7 +100,11 @@
   width: 266px;
   height: 1px;
   background: linear-gradient(90deg, #BDE3F7 0%, #233E98 100%);
-  margin-top: 20px; /* Расстояние от цены до линии */
+  margin-top: 20px;
+}
+
+.mobileGradientLine {
+  display: none;
 }
 
 .featuresList {
@@ -103,6 +115,8 @@
   font-size: 16px;
   line-height: 1.5;
   color: #ffffff;
+  position: relative;
+  z-index: 5;
 }
 
 .featuresList.tight {
@@ -115,43 +129,56 @@
 
 .bottomRow {
   margin-top: auto;
-  margin-bottom: 25px;
   display: flex;
   align-items: center;
-}
-
-.featuresList {
-  margin-bottom: 17px;
+  position: relative;
+  z-index: 5;
 }
 
 .badgesWrapper {
+  position: absolute;
+  bottom: 25px;
+  left: 337px;
   display: flex;
-  gap: 5px;
-  margin-left: 9px;
+  gap: 8px;
+  z-index: 5;
 }
 
 .badge {
   width: 110px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.5); /* Стандарт: прозрачность 50% */
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff; /* Текст белый без прозрачности */
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .badge:hover:not(.badgeActive) {
-  background-color: rgba(255, 255, 255, 0.2); /* При наведении: прозрачность 20% (alpha 0.2) */
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .badgeActive {
-  background-color: #ffffff !important; /* Без прозрачности */
-  color: #233e98 !important; /* Текст синий */
+  background-color: #ffffff !important;
+  color: #233e98 !important;
+}
+
+.mascotContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.mascotPicture {
+  display: block;
 }
 
 .mascot {
@@ -159,4 +186,304 @@
   bottom: 37px;
   object-fit: contain;
   z-index: 1;
+}
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .pricingSection {
+    padding-bottom: 60px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: 100%;
+    padding-left: clamp(30px, 4vw, 62px);
+  }
+
+  .cardTitle {
+    font-size: clamp(24px, 3vw, 32px);
+  }
+
+  .priceValue {
+    font-size: clamp(24px, 3vw, 32px);
+  }
+
+  .featuresList {
+    font-size: clamp(14px, 1.5vw, 16px);
+  }
+
+  .mascot {
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
+}
+
+/* Перестройка кнопок Онлайн/Офлайн в столбик на промежутке от 880px до 769px */
+@media (max-width: 880px) and (min-width: 769px) {
+  .badgesWrapper {
+    left: clamp(300px, 40vw, 337px);
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .badge {
+    width: 90px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .mobileOnlyBr {
+    display: inline;
+  }
+
+  .pricingSection {
+    width: 100%;
+    background-color: #ffffff;
+    background-image: none;
+    padding-bottom: calc(100vh * 60 / 812);
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .sectionTitle {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 16 / 375);
+    color: #233e98;
+    margin-top: calc(100vh * 44 / 812);
+    margin-bottom: calc(100vh * 44 / 812);
+    padding-left: calc(100vw * 19 / 375);
+    text-align: left;
+  }
+
+  .cardsList {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(100vh * 40 / 812);
+  }
+
+  .card {
+    width: calc(100vw * 337 / 375);
+    height: calc(100vw * 580 / 375);
+    aspect-ratio: 337 / 580;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: calc(100vw * 30 / 375);
+    background-color: #233e98;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardTitle {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 16 / 375);
+    font-weight: normal;
+    color: #ffffff;
+    margin: 0;
+    padding-top: calc(100vh * 29 / 812);
+    padding-left: calc(100vw * 20 / 375);
+    padding-right: calc(100vw * 20 / 375);
+    line-height: 1.2;
+  }
+
+  .bottomRow {
+    position: absolute;
+    bottom: calc(100vh * 18 / 812);
+    left: 0;
+    right: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .bottomRow button {
+    width: calc(100vw * 300 / 375);
+    height: calc(100vh * 40 / 812);
+    border-radius: calc(100vw * 20 / 375);
+    font-size: calc(100vw * 16 / 375);
+  }
+
+  .badgesWrapper {
+    position: absolute !important;
+    top: calc(100vh * 32 / 812) !important;
+    right: calc(100vw * 20 / 375) !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin-left: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: calc(100vh * 12 / 812) !important;
+    z-index: 10 !important;
+  }
+
+  .badge {
+    width: calc(100vw * 100 / 375);
+    height: calc(100vh * 30 / 812);
+    border-radius: calc(100vw * 15 / 375);
+    font-size: calc(100vw * 12 / 375);
+  }
+
+  .mascotContainer {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .mascotPicture {
+    display: block;
+    width: 100%;
+  }
+
+  .mascot {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    object-fit: contain;
+    display: block;
+  }
+
+  .card1 .mascot {
+    width: calc(100vw * 298 / 375) !important;
+    height: calc(100vw * 231 / 375) !important;
+    margin-top: calc(100vh * 14 / 812) !important;
+    margin-left: calc(100vw * 22 / 375) !important;
+    margin-bottom: calc(100vh * 18 / 812) !important;
+  }
+
+  .card2 .mascot {
+    width: calc(100vw * 300 / 375) !important;
+    height: calc(100vw * 214 / 375) !important;
+    margin-top: calc(100vh * 20.5 / 812) !important;
+    margin-left: calc(100vw * 22 / 375) !important;
+    margin-bottom: calc(100vh * 28 / 812) !important;
+  }
+
+  .card3 .mascot {
+    width: calc(100vw * 300 / 375) !important;
+    height: calc(100vw * 192 / 375) !important;
+    margin-top: calc(100vh * 50 / 812) !important;
+    margin-left: calc(100vw * 20 / 375) !important;
+    margin-bottom: calc(100vh * 40 / 812) !important;
+  }
+
+  .card4 .mascot {
+    width: calc(100vw * 228 / 375) !important;
+    height: calc(100vw * 231 / 375) !important;
+    margin-top: calc(100vh * 2 / 812) !important;
+    margin-left: calc(100vw * 42 / 375) !important;
+    margin-bottom: calc(100vh * 7 / 812) !important;
+  }
+
+  .priceSection {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .singlePriceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .doublePriceContainer {
+    display: flex;
+    flex-direction: row;
+    gap: calc(100vw * 16 / 375);
+    padding-left: calc(100vw * 19 / 375);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .singlePriceContainer .priceLabel {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 12 / 375);
+    color: #BDE3F7;
+    text-align: center;
+    margin-bottom: calc(100vh * 18 / 812);
+  }
+
+  .singlePriceContainer .priceValue {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 32 / 375);
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: calc(100vh * 21 / 812);
+    line-height: 1;
+  }
+
+  .doublePriceContainer .priceColumn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .doublePriceContainer .priceLabel {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 12 / 375);
+    color: #BDE3F7;
+    text-align: left;
+    margin-bottom: calc(100vh * 18 / 812);
+  }
+
+  .doublePriceContainer .priceValue {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 32 / 375);
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: calc(100vh * 21 / 812);
+    line-height: 1;
+  }
+
+  .gradientLine {
+    display: none;
+  }
+
+  .mobileGradientLine {
+    display: block;
+    width: calc(100vw * 300 / 375);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #BDE3F7 50%, transparent 100%);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: calc(100vh * 18 / 812);
+  }
+
+  .featuresList {
+    margin: 0;
+    padding-left: calc(100vw * 20 / 375);
+    padding-right: calc(100vw * 20 / 375);
+    font-size: calc(100vw * 12 / 375);
+    line-height: 1.4;
+    color: #ffffff;
+  }
+
+  .featuresList li {
+    margin-bottom: calc(100vh * 4 / 812);
+  }
 }

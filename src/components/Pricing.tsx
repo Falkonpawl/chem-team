@@ -8,13 +8,20 @@ import mascot2 from '../assets/Маскот/Стоимость/Стоимост�
 import mascot3 from '../assets/Маскот/Стоимость/Стоимость маскот 3.png';
 import mascot4 from '../assets/Маскот/Стоимость/Стоимость маскот 4.png';
 
+import mobileMascot1 from '../assets/Маскот/Стоимость мобайл/Стоимость 1 мобайл.png';
+import mobileMascot2 from '../assets/Маскот/Стоимость мобайл/Стоимость 2 мобайл.png';
+import mobileMascot3 from '../assets/Маскот/Стоимость мобайл/Стоимость 3 мобайл.png';
+import mobileMascot4 from '../assets/Маскот/Стоимость мобайл/Стоимость 4 мобайл.png';
+
 interface PricingCardProps {
+  cardIndex: number;
   title: string | React.ReactNode;
-  titleString: string; //Для почты
+  titleString: string;
   priceLabel: string;
   priceValue: string;
-  features: string[];
+  features: (string | React.ReactNode)[];
   mascot: string;
+  mobileMascot: string;
   mascotSize: { width: number; height: number };
   mascotRight: number;
   isDoublePrice?: boolean;
@@ -25,7 +32,7 @@ interface PricingCardProps {
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
-  title, titleString, priceLabel, priceValue, features, mascot, mascotSize, mascotRight,
+  cardIndex, title, titleString, priceLabel, priceValue, features, mascot, mobileMascot, mascotSize, mascotRight,
   isDoublePrice, priceLabel2, priceValue2, hasBadges, tightSpacing
 }) => {
   const { openModal } = useModal();
@@ -35,71 +42,92 @@ const PricingCard: React.FC<PricingCardProps> = ({
     openModal(titleString, selectedFormat);
   };
 
-  return (
-    <div className={`${styles.card} ${tightSpacing ? styles.firstCard : ''}`}>
-      <div className={styles.contentLeft}>
-        <h3 className={styles.cardTitle}>{title}</h3>
+  const cardStyleClass = [
+    styles.card,
+    cardIndex === 0 ? styles.card1 : '',
+    cardIndex === 1 ? styles.card2 : '',
+    cardIndex === 2 ? styles.card3 : '',
+    cardIndex === 3 ? styles.card4 : '',
+  ].filter(Boolean).join(' ');
 
-        <div className={styles.priceSection}>
-          <div className={styles.priceContainer}>
+  return (
+    <div className={cardStyleClass}>
+      <h3 className={styles.cardTitle}>{title}</h3>
+
+      {hasBadges && (
+        <div className={styles.badgesWrapper}>
+          <div
+            className={`${styles.badge} ${selectedFormat === 'Онлайн' ? styles.badgeActive : ''}`}
+            onClick={() => setSelectedFormat(selectedFormat === 'Онлайн' ? '' : 'Онлайн')}
+          >
+            Онлайн
+          </div>
+          <div
+            className={`${styles.badge} ${selectedFormat === 'Офлайн' ? styles.badgeActive : ''}`}
+            onClick={() => setSelectedFormat(selectedFormat === 'Офлайн' ? '' : 'Офлайн')}
+          >
+            Офлайн
+          </div>
+        </div>
+      )}
+
+      <div className={styles.mascotContainer}>
+        <picture className={styles.mascotPicture}>
+          <source media="(max-width: 768px)" srcSet={mobileMascot} />
+          <img
+            src={mascot}
+            alt="Mascot"
+            className={styles.mascot}
+            style={{
+              width: mascotSize.width,
+              height: mascotSize.height,
+              right: mascotRight
+            }}
+          />
+        </picture>
+      </div>
+
+      <div className={styles.priceSection}>
+        {isDoublePrice ? (
+          <div className={styles.doublePriceContainer}>
             <div className={styles.priceColumn}>
               <span className={styles.priceLabel}>{priceLabel}</span>
               <span className={styles.priceValue}>{priceValue}</span>
               <div className={styles.gradientLine}></div>
             </div>
-            {isDoublePrice && (
-              <div className={styles.priceColumn} style={{ marginLeft: '36px' }}>
-                <span className={styles.priceLabel}>{priceLabel2}</span>
-                <span className={styles.priceValue}>{priceValue2}</span>
-                <div className={styles.gradientLine}></div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <ul className={`${styles.featuresList} ${tightSpacing ? styles.tight : ''}`}>
-          {features.map((feature, index) => (
-            <li key={index}>{feature}</li>
-          ))}
-        </ul>
-
-        <div className={styles.bottomRow}>
-          <Button text="Оставить заявку" type="secondary" onClick={handleApply} />
-          {hasBadges && (
-            <div className={styles.badgesWrapper}>
-              <div
-                className={`${styles.badge} ${selectedFormat === 'Онлайн' ? styles.badgeActive : ''}`}
-                onClick={() => setSelectedFormat(selectedFormat === 'Онлайн' ? '' : 'Онлайн')}
-              >
-                Онлайн
-              </div>
-              <div
-                className={`${styles.badge} ${selectedFormat === 'Офлайн' ? styles.badgeActive : ''}`}
-                onClick={() => setSelectedFormat(selectedFormat === 'Офлайн' ? '' : 'Офлайн')}
-              >
-                Офлайн
-              </div>
+            <div className={styles.priceColumn}>
+              <span className={styles.priceLabel}>{priceLabel2}</span>
+              <span className={styles.priceValue}>{priceValue2}</span>
+              <div className={styles.gradientLine}></div>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className={styles.singlePriceContainer}>
+            <div className={styles.priceColumn}>
+              <span className={styles.priceLabel}>{priceLabel}</span>
+              <span className={styles.priceValue}>{priceValue}</span>
+              <div className={styles.gradientLine}></div>
+            </div>
+          </div>
+        )}
+        <div className={styles.mobileGradientLine}></div>
       </div>
 
-      <img
-        src={mascot}
-        alt="Mascot"
-        className={styles.mascot}
-        style={{
-          width: mascotSize.width,
-          height: mascotSize.height,
-          right: mascotRight
-        }}
-      />
+      <ul className={`${styles.featuresList} ${tightSpacing ? styles.tight : ''}`}>
+        {features.map((feature, index) => (
+          <li key={index}>{feature}</li>
+        ))}
+      </ul>
+
+      <div className={styles.bottomRow}>
+        <Button text="Оставить заявку" type="secondary" onClick={handleApply} />
+      </div>
     </div>
   );
 };
 
 const Pricing: React.FC = () => {
-  const cards: PricingCardProps[] = [
+  const cards: Omit<PricingCardProps, 'cardIndex'>[] = [
     {
       title: <>Групповые занятия 11 класс<br />Подготовка к ЦТ и ЦЭ</>,
       titleString: "Групповые занятия 11 класс (Подготовка к ЦТ и ЦЭ)",
@@ -112,12 +140,13 @@ const Pricing: React.FC = () => {
         "Мини-группы до 7 человек"
       ],
       mascot: mascot1,
+      mobileMascot: mobileMascot1,
       mascotSize: { width: 425, height: 333 },
       mascotRight: 28,
       tightSpacing: true
     },
     {
-      title: "Групповые занятия 7-10 классы",
+      title: <>Групповые занятия<br className={styles.mobileOnlyBr} /> 7-10 классы</>,
       titleString: "Групповые занятия 7-10 классы",
       priceLabel: "Стоимость одного занятия",
       priceValue: "23 BYN",
@@ -128,6 +157,7 @@ const Pricing: React.FC = () => {
         "Мини-группы до 7 человек"
       ],
       mascot: mascot2,
+      mobileMascot: mobileMascot2,
       mascotSize: { width: 546, height: 271 },
       mascotRight: 36
     },
@@ -143,11 +173,12 @@ const Pricing: React.FC = () => {
         "Длительность занятия 60 минут"
       ],
       mascot: mascot3,
+      mobileMascot: mobileMascot3,
       mascotSize: { width: 485, height: 312 },
       mascotRight: 36
     },
     {
-      title: "Индивидуальные занятия",
+      title: <>Индивидуальные<br className={styles.mobileOnlyBr} /> занятия</>,
       titleString: "Индивидуальные занятия",
       priceLabel: "Стоимость разового занятия",
       priceValue: "55 BYN",
@@ -155,12 +186,13 @@ const Pricing: React.FC = () => {
       priceLabel2: "Стоимость занятия в абонементе",
       priceValue2: "50 BYN",
       features: [
-        "Абонемент 4 занятий = 200 BYN / 8 занятий = 400 BYN",
+        <>Абонемент 4 занятия = 200 BYN /<br className={styles.mobileOnlyBr} /> 8 занятий = 400 BYN</>,
         "Индивидуальный план",
         "Поддержка 24/7",
         "Длительность занятия 60 минут"
       ],
       mascot: mascot4,
+      mobileMascot: mobileMascot4,
       mascotSize: { width: 297, height: 317 },
       mascotRight: 56,
       hasBadges: true
@@ -173,7 +205,7 @@ const Pricing: React.FC = () => {
         <h2 className={styles.sectionTitle}>Стоимость занятий</h2>
         <div className={styles.cardsList}>
           {cards.map((card, index) => (
-            <PricingCard key={index} {...card} />
+            <PricingCard key={index} cardIndex={index} {...card} />
           ))}
         </div>
       </div>

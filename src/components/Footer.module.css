@@ -40,7 +40,7 @@
 .formSection {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Остались вопросы прижато к левому краю */
+  align-items: flex-start;
   width: 550px;
   margin-top: 106px;
 }
@@ -137,13 +137,12 @@
 
 .navSide {
   position: absolute;
-  /* Центр кнопки отправить находится на 612px от левого края контента 930px */
   left: 612px;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: flex-start; /* Чтобы буквы начинались с одной линии */
+  align-items: flex-start;
 }
 
 .footerNavLink {
@@ -181,4 +180,166 @@
 .socialLink img {
   width: 24px;
   height: 24px;
+}
+
+.mobileNavAndSocialBlock {
+  display: none;
+}
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .navSide {
+    left: 50%;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh * 750 / 812);
+    padding-bottom: calc(100vh * 40 / 812);
+  }
+
+  .container {
+    width: 100%;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .upButton {
+    position: absolute;
+    top: calc(100vh * 60 / 812);
+    right: calc(100vw * 36 / 375);
+    left: auto;
+  }
+
+  .upButton img {
+    width: calc(100vw * 40 / 375);
+    height: calc(100vw * 40 / 375);
+  }
+
+  .formSection {
+    width: 100%;
+    margin-top: calc(100vh * 50 / 812);
+  }
+
+  .title {
+    font-size: calc(100vw * 32 / 375);
+    padding-left: calc(100vw * 39 / 375);
+    margin-bottom: calc(100vh * 28 / 812);
+  }
+
+  .subtitle {
+    font-size: calc(100vw * 12 / 375);
+    padding-left: calc(100vw * 39 / 375);
+    padding-right: calc(100vw * 36 / 375);
+    margin-bottom: calc(100vh * 20 / 812);
+    line-height: 1.3;
+  }
+
+  .form {
+    align-items: flex-start;
+    padding-left: 0;
+    gap: calc(100vh * 20 / 812);
+  }
+
+  .input {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vh * 40 / 812);
+    font-size: calc(100vw * 16 / 375);
+    border-radius: calc(100vw * 20 / 375);
+    padding: 0 calc(100vw * 20 / 375);
+    margin-left: calc(100vw * 39 / 375);
+  }
+
+  .buttonRow {
+    justify-content: flex-start;
+    padding-left: 0;
+    margin-left: calc(100vw * 31 / 375);
+    gap: calc(100vw * 8 / 375);
+    margin-top: 0;
+    margin-bottom: calc(100vh * 60 / 812);
+    width: auto;
+  }
+
+  .telegramIcon {
+    width: calc(100vw * 40 / 375);
+    height: calc(100vw * 40 / 375);
+    flex-shrink: 0;
+  }
+
+  .buttonRow button {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vh * 40 / 812);
+    border-radius: calc(100vw * 20 / 375);
+    font-size: calc(100vw * 16 / 375);
+    flex-shrink: 0;
+  }
+
+  .bottomSection {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logoSide {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(100vw * 36 / 375);
+    margin-bottom: calc(100vh * 51 / 812);
+  }
+
+  .logo {
+    width: calc(100vw * 162 / 375);
+    height: calc(100vw * 37 / 375);
+  }
+
+  .navSide,
+  .socialSide {
+    display: none;
+  }
+
+  .mobileNavAndSocialBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: calc(100vh * 12 / 812);
+  }
+
+  .mobileLinkLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mobileLinkLine .footerNavLink {
+    font-size: calc(100vw * 16 / 375);
+    padding-left: calc(100vw * 39 / 375);
+  }
+
+  .mobileLinkLine .socialLink {
+    gap: calc(100vw * 8 / 375);
+    font-size: calc(100vw * 16 / 375);
+    align-items: center;
+    padding-right: calc(100vw * 31 / 375);
+  }
+
+  .mobileLinkLine .socialLink img {
+    width: calc(100vw * 25 / 375);
+    height: calc(100vw * 25 / 375);
+  }
 }

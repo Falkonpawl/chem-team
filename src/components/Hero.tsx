@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './Hero.module.css';
 import Button from './Button';
 import mascotsImage from '../assets/Маскот/Маскоты Главная.png';
+import mobileMascotImage from '../assets/Маскот/Главная маскот мобайл.png';
 import { sendEmail } from '../services/emailService';
 
 const Hero: React.FC = () => {
@@ -68,6 +69,16 @@ const Hero: React.FC = () => {
           Онлайн школа<br />по химии
         </h1>
 
+        <div className={styles.mascotWrapper}>
+          <picture>
+            <source media="(max-width: 768px)" srcSet={mobileMascotImage} />
+            <img src={mascotsImage} alt="Маскоты" className={styles.image} />
+          </picture>
+          <p className={styles.imageCaption}>
+            Посетите первое пробное<br />занятие бесплатно
+          </p>
+        </div>
+
         <div className={styles.leftContent}>
           <h2 className={styles.subtitle}>Успейте<br />записаться!</h2>
 
@@ -97,13 +108,6 @@ const Hero: React.FC = () => {
               />
             </div>
           </form>
-        </div>
-
-        <div className={styles.rightContent}>
-          <img src={mascotsImage} alt="Маскоты" className={styles.image} />
-          <p className={styles.imageCaption}>
-            Посетите первое пробное<br />занятие бесплатно
-          </p>
         </div>
       </div>
     </section>

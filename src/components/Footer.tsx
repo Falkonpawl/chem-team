@@ -128,6 +128,23 @@ const Footer: React.FC = () => {
               <span>@xumteam</span>
             </a>
           </div>
+
+          <div className={styles.mobileNavAndSocialBlock}>
+            <div className={styles.mobileLinkLine}>
+              <Link to="/schedule" className={styles.footerNavLink} onClick={scrollToTop}>Расписание</Link>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className={styles.socialLink}>
+                <img src={instagramIcon} alt="Instagram" />
+                <span>@xumteam</span>
+              </a>
+            </div>
+            <div className={styles.mobileLinkLine}>
+              <Link to="/articles" className={styles.footerNavLink} onClick={scrollToTop}>Статьи</Link>
+              <a href="https://tiktok.com" target="_blank" rel="noreferrer" className={styles.socialLink}>
+                <img src={tiktokIcon} alt="TikTok" />
+                <span>@xumteam</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

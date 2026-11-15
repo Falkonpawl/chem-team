@@ -10,7 +10,10 @@
   width: 760px; /* Сам блок в ширину 760 */
   height: 452px; /* и в высоту 452 */
   position: relative;
-  /* background-color: #f9f9f9;  Для отладки можно раскомментировать */
+}
+
+.mobileOnlyBr {
+  display: none;
 }
 
 .microscope {
@@ -75,4 +78,111 @@
 
 .buttonWrapper {
   margin-top: 28px; /* К кнопке оттуп 28 */
+}
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .section {
+    margin-top: 30px;
+  }
+
+  .block {
+    width: 100%;
+    max-width: 760px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .section {
+    width: 100%;
+    margin-top: calc(100vh * 20 / 812);
+    margin-bottom: calc(100vh * 40 / 812);
+  }
+
+  .block {
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh * 380 / 812);
+    position: relative;
+    padding: 0;
+  }
+
+  .mobileOnlyBr {
+    display: inline;
+  }
+
+  .flask {
+    display: none;
+  }
+
+  .atom {
+    width: calc(100vw * 54 / 375);
+    height: calc(100vw * 54 / 375);
+    top: 0;
+    left: calc(100vw * 156 / 375);
+    transform: rotate(132deg);
+  }
+
+  .microscope {
+    width: calc(100vw * 48 / 375);
+    height: calc(100vw * 68 / 375);
+    top: calc(100vh * 40 / 812);
+    left: calc(100vw * 27 / 375);
+    transform: rotate(-30deg) scaleX(-1);
+  }
+
+  .mascot {
+    width: calc(100vw * 129 / 375);
+    height: calc(100vw * 255 / 375);
+    top: 0;
+    right: calc(100vw * 20 / 375);
+    left: auto;
+  }
+
+  .content {
+    position: relative;
+    top: auto;
+    left: 0;
+    width: 100%;
+    margin-top: calc(100vh * 135 / 812);
+  }
+
+  .title {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 32 / 375);
+    color: #233e98;
+    margin: 0;
+    margin-top: calc(100vh * 8 / 812);
+    margin-bottom: calc(100vh * 8 / 812);
+    padding-left: calc(100vw * 40 / 375);
+    line-height: 1.1;
+  }
+
+  .subtext {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 12 / 375);
+    color: #233e98;
+    margin: 0;
+    padding-left: calc(100vw * 40 / 375);
+    margin-bottom: calc(100vh * 50 / 812);
+    margin-top: 0;
+    line-height: 1.3;
+  }
+
+  .buttonWrapper {
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttonWrapper button {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vh * 40 / 812);
+    border-radius: calc(100vw * 20 / 375);
+    font-size: calc(100vw * 16 / 375);
+  }
 }

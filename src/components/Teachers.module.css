@@ -13,12 +13,21 @@
   flex-direction: column;
 }
 
+.headerRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 42px;
+}
+
 .sectionTitle {
   font-family: 'Stolzl Regular', sans-serif;
   font-size: 32px;
-  color: #233e98; /* Цвет заголовка секции остается синим на белом фоне */
+  color: #233e98;
   margin: 0;
-  margin-bottom: 42px; /* Расстояние от текста преподователи до блоков 42 пикселя */
+}
+
+.navButtonsWrapper {
+  display: none;
 }
 
 .cardsList {
@@ -32,9 +41,9 @@
   background-color: #233e98;
   border-radius: 40px;
   display: flex;
-  padding: 23px; /* Расстояние от краев до фото 23 пикселя */
+  padding: 23px;
   box-sizing: border-box;
-  color: #ffffff; /* Весь текст внутри блока белый */
+  color: #ffffff;
 }
 
 .reverse {
@@ -43,6 +52,7 @@
 
 .imageWrapper {
   flex-shrink: 0;
+  position: relative;
 }
 
 .photo {
@@ -52,19 +62,24 @@
   object-fit: cover;
 }
 
+.mascot {
+  display: none;
+}
+
+.flippedMascot {
+  transform: scaleX(-1);
+}
+
 .infoWrapper {
-  margin-top: 9px; /* 32 (top edge to text) - 23 (padding) = 9px */
-  margin-left: 51px; /* Расстояние до блока текста от фото 51 */
+  margin-top: 9px;
+  margin-left: 51px;
   flex: 1;
 }
 
 .reverse .infoWrapper {
   margin-left: 0;
-  /* В случае если текст слева (фото справа):
-     Нужен отступ 74 от края. Padding уже 23. 74 - 23 = 51.
-  */
   padding-left: 51px;
-  padding-right: 51px; /* Расстояние до фото справа */
+  padding-right: 51px;
 }
 
 .name {
@@ -73,7 +88,7 @@
   font-weight: normal;
   margin: 0;
   margin-bottom: 12px;
-  color: #ffffff; /* Текст заголовков белый */
+  color: #ffffff;
 }
 
 .experience {
@@ -81,7 +96,7 @@
   font-size: 16px;
   margin: 0;
   margin-bottom: 16px;
-  color: #ffffff; /* Текст белый */
+  color: #ffffff;
 }
 
 .descriptionList {
@@ -90,7 +105,7 @@
   margin: 0;
   padding-left: 20px;
   list-style-type: disc;
-  color: #ffffff; /* Текст белый */
+  color: #ffffff;
 }
 
 .descriptionList li {
@@ -99,4 +114,207 @@
 
 .descriptionList li:last-child {
   margin-bottom: 0;
+}
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .teachersSection {
+    padding-top: 60px;
+    min-height: auto;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .photo {
+    width: clamp(200px, 25vw, 261px);
+    height: auto;
+    aspect-ratio: 261 / 251;
+  }
+
+  .infoWrapper {
+    margin-left: clamp(20px, 3vw, 51px);
+  }
+
+  .reverse .infoWrapper {
+    padding-left: clamp(20px, 3vw, 51px);
+    padding-right: clamp(20px, 3vw, 51px);
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .teachersSection {
+    width: 100%;
+    min-height: auto;
+    padding-top: 0;
+    padding-bottom: calc(100vw * 40 / 375);
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .headerRow {
+    position: relative;
+    width: 100%;
+    height: calc(100vw * 115 / 375);
+    margin-bottom: 0;
+  }
+
+  .sectionTitle {
+    position: absolute;
+    top: calc(100vw * 65 / 375);
+    left: calc(100vw * 25 / 375);
+    font-size: calc(100vw * 16 / 375);
+    color: #233e98;
+    margin: 0;
+  }
+
+  .navButtonsWrapper {
+    display: flex;
+    align-items: center;
+    gap: calc(100vw * 12 / 375);
+    position: absolute;
+    top: calc(100vw * 68 / 375);
+    right: calc(100vw * 20 / 375);
+  }
+
+  .arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw * 30 / 375);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .hiddenArrow {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .arrowIcon {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .cardsList {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: calc(100vw * 15 / 375);
+    padding-left: calc((100vw - (100vw * 345 / 375)) / 2);
+    padding-right: calc((100vw - (100vw * 345 / 375)) / 2);
+    padding-bottom: calc(100vw * 20 / 375);
+    scrollbar-width: none;
+  }
+
+  .cardsList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: calc(100vw * 345 / 375);
+    height: calc(100vw * 580 / 375);
+    aspect-ratio: 345 / 580;
+    border-radius: calc(100vw * 30 / 375);
+    background-color: #233e98;
+    padding: calc(100vw * 20 / 375) calc(100vw * 19 / 375);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reverse {
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .photo {
+    width: calc(100vw * 300 / 375);
+    height: calc(100vw * 300 / 375);
+    aspect-ratio: 1 / 1;
+    border-radius: calc(100vw * 20 / 375);
+    object-fit: cover;
+  }
+
+  .mascot {
+    display: block;
+    position: absolute;
+    width: calc(100vw * 116 / 375);
+    height: calc(100vw * 191 / 375);
+    aspect-ratio: 116 / 191;
+    right: 0;
+    top: calc(100vw * 150 / 375);
+    z-index: 10;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .infoWrapper {
+    margin-top: calc(100vw * 20 / 375);
+    margin-left: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .reverse .infoWrapper {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .name {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 32 / 375);
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    margin-bottom: calc(100vw * 16 / 375);
+  }
+
+  .experience {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 12 / 375);
+    color: #ffffff;
+    margin-bottom: calc(100vw * 8 / 375);
+  }
+
+  .descriptionList {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 12 / 375);
+    color: #ffffff;
+    padding-left: calc(100vw * 16 / 375);
+    margin: 0;
+  }
+
+  .descriptionList li {
+    margin-bottom: calc(100vw * 4 / 375);
+  }
 }

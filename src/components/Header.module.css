@@ -4,6 +4,8 @@
   background-color: #ffffff;
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 50;
 }
 
 .headerContent {
@@ -12,6 +14,11 @@
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
+  position: relative;
+}
+
+.logoLink {
+  display: inline-block;
 }
 
 .logo {
@@ -21,10 +28,14 @@
   margin-top: 35px;
 }
 
+.menuButton {
+  display: none;
+}
+
 .navigation {
   display: flex;
   margin-left: auto;
-  margin-top: 36px; /* Adjusting to 36px to align with logo/button centers */
+  margin-top: 36px; /* Aligning with logo/button centers */
   align-items: center;
 }
 
@@ -74,4 +85,194 @@
 
 .buttonWrapper {
   margin-top: 40px;
+}
+
+.mobileMenuOverlay {
+  display: none;
+}
+
+/* Плавное уменьшение в промежутке от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .headerContent {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+  }
+
+  .navLink,
+  .navLinkActive {
+    margin-right: clamp(12px, 2.8vw, 30px);
+  }
+
+  .navLink:last-of-type,
+  .navLinkActive:last-of-type {
+    margin-right: clamp(20px, 6vw, 67px);
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .header {
+    height: calc(100vh * 120 / 812);
+  }
+
+  .headerContent {
+    width: 100%;
+    height: calc(100vh * 120 / 812);
+    display: block;
+    position: relative;
+    padding: 0;
+  }
+
+  .logoLink {
+    position: absolute;
+    top: calc(100vh * 68 / 812);
+    left: calc(100vw * 20 / 375);
+    width: calc(100vw * 130 / 375);
+    height: calc(100vh * 30 / 812);
+  }
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    object-fit: contain;
+  }
+
+  .menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: calc(100vh * 78.5 / 812);
+    right: calc(100vw * 24 / 375);
+    width: calc(100vw * 28 / 375);
+    height: calc(100vh * 14 / 812);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .menuIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .navigation,
+  .buttonWrapper {
+    display: none;
+  }
+
+  .mobileMenuOverlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: linear-gradient(180deg, #233E98 29%, #BDE3F7 100%);
+    z-index: 1000;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .mobileMenuHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .mobileMenuLogoLink {
+    position: absolute;
+    top: calc(100vh * 69 / 812);
+    left: calc(100vw * 20 / 375);
+    width: calc(100vw * 130 / 375);
+    height: calc(100vh * 30 / 812);
+  }
+
+  .mobileMenuLogo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .mobileMenuSubtext {
+    position: absolute;
+    top: calc(100vh * 76 / 812);
+    right: calc(100vw * 20 / 375);
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 16 / 375);
+    color: #ffffff;
+    text-align: right;
+    line-height: 1.2;
+  }
+
+  .backButton {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: calc(100vh * 149 / 812);
+    margin-left: calc(100vw * 25 / 375);
+    margin-bottom: calc(100vh * 51 / 812);
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 16 / 375);
+    color: #ffffff;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobileMenuNav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mobileNavItem {
+    display: flex;
+    align-items: center;
+    gap: calc(100vw * 2 / 375);
+    margin-left: calc(100vw * 102 / 375);
+    margin-bottom: calc(100vh * 62 / 812);
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 32 / 375);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .mobileNavItemArticles {
+    display: flex;
+    align-items: center;
+    gap: calc(100vw * 2 / 375);
+    margin-left: calc(100vw * 102 / 375);
+    margin-bottom: calc(100vh * 81 / 812);
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 32 / 375);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .diagonalArrow {
+    width: calc(100vw * 23 / 375);
+    height: calc(100vw * 23 / 375);
+    flex-shrink: 0;
+  }
+
+  .mobileMenuButtonWrapper {
+    margin-left: calc(100vw * 90 / 375);
+  }
+
+  .mobileMenuButtonWrapper button {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vh * 40 / 812);
+    border-radius: calc(100vw * 20 / 375);
+    font-size: calc(100vw * 16 / 375);
+    border: none !important;
+  }
 }
