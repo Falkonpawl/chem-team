@@ -18,7 +18,11 @@
   margin: 0;
   margin-top: 48px;
   text-align: right;
-  font-weight: normal; /* Не выделять жирным */
+  font-weight: normal;
+}
+
+.mobileTitleBr {
+  display: none;
 }
 
 .blocksList {
@@ -45,7 +49,8 @@
   flex-direction: column;
 }
 
-.blockTitle, .blockSubtitle {
+.blockTitle,
+.blockSubtitle {
   font-family: 'Stolzl Regular', sans-serif;
   font-size: 32px;
   color: #233e98;
@@ -54,10 +59,14 @@
   font-weight: normal;
 }
 
-.navigation {
+.desktopNavigation {
   display: flex;
   gap: 10px;
   margin-top: 3px;
+}
+
+.mobileNavigation {
+  display: none;
 }
 
 .navBtn {
@@ -76,7 +85,6 @@
   height: 32px;
 }
 
-/* Настройка карусели */
 .carouselWindow {
   width: 930px;
   overflow: hidden;
@@ -85,14 +93,20 @@
 .carouselTrack {
   display: flex;
   gap: 20px;
-  transition: transform 0.5s ease;
-  align-items: stretch; /* Убеждаемся, что все карточки в ряду тянутся по высоте самой высокой */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  align-items: stretch;
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
   flex-shrink: 0;
   width: 455px;
-  min-height: 230px; /* Было height: 230px. Теперь min-height для возможности роста */
+  min-height: 230px;
   background-color: #BDE3F7;
   border-radius: 30px;
   padding: 19px;
@@ -112,8 +126,7 @@
 .cardListWrapper {
   flex-grow: 1;
   display: flex;
-  align-items: center; /* Текст центрируется от оставшегося места */
-  /* margin-top: 30px;  Убрал отступ после заглавия */
+  align-items: center;
 }
 
 .moduleList {
@@ -123,13 +136,180 @@
 }
 
 .listItem {
-  font-family: 'Stolzl Regular', sans-serif;
+  font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+  font-weight: 350;
   font-size: 14px;
   color: #233e98;
   line-height: 1.4;
-  margin-bottom: 10px; /* Уменьшено с 20px до 10px для лучшей вместимости */
+  margin-bottom: 10px;
 }
 
 .listItem:last-child {
   margin-bottom: 0;
+}
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .container,
+  .carouselWindow {
+    width: 100%;
+    max-width: 930px;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .programsSection {
+    width: 100%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: calc(100vw * 12 / 375);
+    margin-top: 0;
+    margin-bottom: calc(100vh * 53 / 812);
+    margin-right: calc(100vw * 16 / 375);
+    text-align: right;
+  }
+
+  .mobileTitleBr {
+    display: block;
+  }
+
+  .blocksList {
+    margin-top: 0;
+  }
+
+  .classBlock {
+    margin-bottom: calc(100vh * 89 / 812);
+  }
+
+  .classBlock:last-child {
+    margin-bottom: calc(100vh * 80 / 812);
+  }
+
+  .blockHeader {
+    position: relative;
+    width: 100%;
+    margin-bottom: calc(100vh * 49 / 812);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .titleWrapper {
+    margin-left: calc(100vw * 43 / 375);
+  }
+
+  .blockTitle,
+  .blockSubtitle {
+    font-size: calc(100vw * 14 / 375);
+    line-height: 1.2;
+  }
+
+  .desktopNavigation {
+    display: none;
+  }
+
+  .mobileNavigation {
+    display: flex;
+    align-items: center;
+    gap: calc(100vw * 12 / 375);
+    margin-right: calc(100vw * 20 / 375);
+    margin-top: calc(100vh * 2 / 812);
+  }
+
+  .mobileArrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw * 30 / 375);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .hiddenArrow {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .arrowIcon {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .carouselWindow {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .carouselTrack {
+    width: 100%;
+    display: flex;
+    gap: calc(100vw * 20 / 375);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-left: calc((100vw - (100vw * 264 / 375)) / 2);
+    padding-right: calc((100vw - (100vw * 264 / 375)) / 2);
+    box-sizing: border-box;
+    scrollbar-width: none;
+    align-items: stretch;
+  }
+
+  .carouselTrack::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: calc(100vw * 264 / 375);
+    height: auto;
+    border-radius: calc(100vw * 30 / 375);
+    padding: 0;
+    background-color: #BDE3F7;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardTitle {
+    font-size: calc(100vw * 16 / 375);
+    margin-left: calc(100vw * 14 / 375);
+    margin-top: calc(100vh * 27 / 812);
+    margin-bottom: calc(100vh * 54 / 812);
+    margin-right: calc(100vw * 14 / 375);
+    line-height: 1.2;
+  }
+
+  .cardListWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: calc(100vh * 27 / 812);
+  }
+
+  .moduleList {
+    padding: 0;
+    margin: 0;
+  }
+
+  .listItem {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
+    font-size: calc(100vw * 13 / 375);
+    margin-left: calc(100vw * 15 / 375);
+    margin-right: calc(100vw * 15 / 375);
+    margin-bottom: calc(100vh * 10 / 812);
+    line-height: 1.4;
+  }
 }

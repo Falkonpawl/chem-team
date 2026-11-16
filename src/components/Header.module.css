@@ -178,6 +178,7 @@
     z-index: 1000;
     overflow-y: auto;
     box-sizing: border-box;
+    padding-bottom: calc(100vh * 30 / 812);
   }
 
   .mobileMenuHeader {
@@ -251,7 +252,7 @@
     align-items: center;
     gap: calc(100vw * 2 / 375);
     margin-left: calc(100vw * 102 / 375);
-    margin-bottom: calc(100vh * 81 / 812);
+    margin-bottom: calc(100vh * 80 / 812);
     font-family: 'Stolzl Regular', sans-serif;
     font-size: calc(100vw * 32 / 375);
     color: #ffffff;
@@ -266,6 +267,8 @@
 
   .mobileMenuButtonWrapper {
     margin-left: calc(100vw * 90 / 375);
+    margin-top: 0;
+    margin-bottom: calc(100vh * 30 / 812);
   }
 
   .mobileMenuButtonWrapper button {

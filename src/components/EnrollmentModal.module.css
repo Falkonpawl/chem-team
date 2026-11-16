@@ -116,3 +116,129 @@
   opacity: 1 !important;
   cursor: default;
 }
+
+.backButton {
+  display: none;
+}
+
+/* Мобильная версия под 375x812 */
+@media (max-width: 768px) {
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #233e98;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding-bottom: calc(100vh * 30 / 812);
+    z-index: 1000;
+  }
+
+  .overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/Паттерны/Вертикальные Full HD/Сон Менделеева/Сон Менделеева_М_сайт.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1; /* 10% прозрачности */
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .backButton {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Stolzl Regular', sans-serif;
+    color: #ffffff;
+    font-size: calc(100vw * 16 / 375);
+    margin-left: calc(100vw * 24 / 375);
+    margin-top: calc(100vh * 98 / 812);
+    margin-bottom: calc(100vh * 104 / 812);
+  }
+
+  .modal {
+    position: relative;
+    z-index: 1;
+    width: calc(100vw * 328 / 375);
+    height: calc(100vh * 421 / 812);
+    border-radius: calc(100vw * 30 / 375);
+    margin: 0 auto;
+    padding: 0 0 calc(100vh * 30 / 812) 0;
+    align-items: flex-start;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .molecule {
+    top: calc(100vh * 38 / 812);
+    right: calc(100vw * 29 / 375);
+    width: calc(100vw * 63 / 375);
+    height: calc(100vh * 34 / 812);
+  }
+
+  .title {
+    font-size: calc(100vw * 32 / 375);
+    margin-top: calc(100vh * 32 / 812);
+    margin-left: calc(100vw * 29 / 375);
+    margin-bottom: calc(100vh * 29 / 812);
+    width: auto;
+  }
+
+  .subtitle {
+    font-size: calc(100vw * 16 / 375);
+    margin-top: 0;
+    margin-left: calc(100vw * 29 / 375);
+    margin-bottom: calc(100vh * 44 / 812);
+    width: calc(100vw * 270 / 375);
+  }
+
+  .form {
+    margin-top: 0;
+    gap: calc(100vh * 22 / 812);
+    align-items: flex-start;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input {
+    width: calc(100vw * 270 / 375);
+    height: calc(100vh * 40 / 812);
+    margin-left: calc(100vw * 29 / 375);
+    font-size: calc(100vw * 16 / 375);
+    padding-left: calc(100vw * 14 / 375);
+    flex-shrink: 0;
+  }
+
+  .submitBtn {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vh * 40 / 812);
+    margin-left: calc(100vw * 29 / 375);
+    margin-top: auto;
+    margin-bottom: 0;
+    font-size: calc(100vw * 16 / 375);
+    flex-shrink: 0;
+  }
+}
+

@@ -12,12 +12,24 @@
   flex-direction: column;
 }
 
-.controls {
+.sectionTitle {
+  display: none;
+}
+
+.mobileBr {
+  display: none;
+}
+
+.desktopControls {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.mobileControls {
+  display: none;
 }
 
 .classBadge {
@@ -61,7 +73,7 @@
   height: 150px;
   background-color: #233e98;
   border-radius: 40px;
-  overflow: hidden; /* Важно для карусели */
+  overflow: hidden;
   display: flex;
 }
 
@@ -136,7 +148,6 @@
   object-fit: contain;
 }
 
-/* Анимация для списка уроков */
 .detailsWindow {
   width: 100%;
   overflow: hidden;
@@ -185,4 +196,160 @@
 
 .lessonTitle {
   font-weight: 400;
+}
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .scheduleSection {
+    padding-bottom: calc(100vh * 50 / 812);
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sectionTitle {
+    display: block;
+    font-size: calc(100vw * 16 / 375);
+    margin-left: calc(100vw * 18 / 375);
+    margin-top: 0;
+    margin-bottom: calc(100vh * 44 / 812);
+    line-height: 1.2;
+    color: #233e98;
+  }
+
+  .mobileBr {
+    display: block;
+  }
+
+  .desktopControls {
+    display: none;
+  }
+
+  .mobileControls {
+    display: flex;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: calc(100vh * 25 / 812);
+    justify-content: center;
+  }
+
+  .mobileClassBadge {
+    width: calc(100vw * 337 / 375);
+    height: calc(100vh * 40 / 812);
+    border-radius: 100px;
+    background-color: #233e98;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .mobileClassBadgeText {
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 14 / 375);
+    color: #ffffff;
+  }
+
+  .mobileNavBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw * 38 / 375);
+    height: calc(100vw * 38 / 375);
+  }
+
+  .mobileNavBtn:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  .mobileNavBtn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .calendarStrip {
+    width: calc(100vw * 335 / 375);
+    height: calc(100vh * 64 / 812);
+    border-radius: calc(100vw * 20 / 375);
+    margin: 0 auto;
+    margin-bottom: calc(100vh * 25 / 812);
+  }
+
+  .daysWrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0 calc(100vw * 12 / 375);
+    box-sizing: border-box;
+  }
+
+  .dayItem {
+    width: calc(100vw * 36 / 375);
+    height: 100%;
+  }
+
+  .dayText {
+    font-size: calc(100vw * 16 / 375);
+    text-transform: none;
+  }
+
+  .flaskWrapper {
+    width: calc(100vw * 45 / 375);
+    height: calc(100vh * 74 / 812);
+    transform: translate(calc(-38% + 3px), calc(-62% + 3px));
+  }
+
+  .flask {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .detailsWindow {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .detailsList {
+    padding-left: calc(100vw * 35 / 375);
+    width: 100%;
+    gap: calc(100vh * 12 / 812);
+    box-sizing: border-box;
+  }
+
+  .lessonItem {
+    font-size: calc(100vw * 12 / 375);
+    align-items: flex-start;
+  }
+
+  .bullet {
+    font-size: calc(100vw * 14 / 375);
+    margin-right: calc(100vw * 8 / 375);
+  }
+
+  .lessonTime,
+  .lessonDivider,
+  .lessonTitle {
+    font-size: calc(100vw * 12 / 375);
+    line-height: 1.4;
+  }
 }

@@ -20,12 +20,37 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
 
   useEffect(() => {
     if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
       setStatus('idle');
       setName('');
       setPhone('+375');
       setNameError(false);
       setPhoneError(false);
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      }
     }
+
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      }
+    };
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -91,13 +116,17 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
 
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
+      <button className={styles.backButton} onClick={onClose}>
+        ← Вернуться назад
+      </button>
+
       <div className={styles.modal}>
         <img src={moleculeIcon} alt="Molecule" className={styles.molecule} />
 
         <h2 className={styles.title}>Успейте<br />записаться!</h2>
 
         <p className={styles.subtitle}>
-          Посетите первое пробное занятие<br />бесплатно
+          Посетите первое пробное<br />занятие бесплатно
         </p>
 
         <form className={styles.form} onSubmit={handleSubmit}>

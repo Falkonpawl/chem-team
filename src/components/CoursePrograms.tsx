@@ -1,37 +1,81 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from './CoursePrograms.module.css';
 import { programsData } from '../data/programsData';
 import type { ClassProgram } from '../data/programsData';
 import leftBtn from '../assets/icons/leftbutton.svg';
 import rightBtn from '../assets/icons/rightbutton.svg';
+import leftArrowIcon from '../assets/icons/leftthinArrow.svg';
+import rightArrowIcon from '../assets/icons/rightthinArrow.svg';
 
 const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const handleNext = () => {
-    // We show 2 cards, so we can scroll up to modules.length - 2
-    setCurrentIndex((prev) => Math.min(prev + 1, data.modules.length - 2));
+  const checkScroll = () => {
+    if (trackRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = trackRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
   };
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (el) {
+      checkScroll();
+      el.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll);
+      return () => {
+        el.removeEventListener('scroll', checkScroll);
+        window.removeEventListener('resize', checkScroll);
+      };
+    }
+  }, []);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    if (trackRef.current) {
+      const step = trackRef.current.clientWidth * 0.8;
+      trackRef.current.scrollBy({ left: -step, behavior: 'smooth' });
+    }
   };
+
+  const handleNext = () => {
+    if (trackRef.current) {
+      const step = trackRef.current.clientWidth * 0.8;
+      trackRef.current.scrollBy({ left: step, behavior: 'smooth' });
+    }
+  };
+
+  const is11Class = data.classLevel.includes('11 класс');
 
   return (
     <div className={styles.classBlock}>
       <div className={styles.blockHeader}>
         <div className={styles.titleWrapper}>
-          <h3 className={styles.blockTitle}>Групповые занятия {data.classLevel}</h3>
+          <h3 className={styles.blockTitle}>
+            Групповые занятия
+            {!is11Class ? (
+              <>
+                <br className={styles.mobileTitleBr} /> {data.classLevel}
+              </>
+            ) : (
+              ` ${data.classLevel}`
+            )}
+          </h3>
           {data.subtitle && <h3 className={styles.blockSubtitle}>{data.subtitle}</h3>}
         </div>
-        <div className={styles.navigation}>
+
+        {/* Desktop Navigation */}
+        <div className={styles.desktopNavigation}>
           <button
             className={styles.navBtn}
             onClick={handlePrev}
             style={{
-              opacity: currentIndex === 0 ? 0.3 : undefined,
-              cursor: currentIndex === 0 ? 'default' : 'pointer'
+              opacity: !canScrollLeft ? 0.3 : 1,
+              cursor: !canScrollLeft ? 'default' : 'pointer'
             }}
+            disabled={!canScrollLeft}
           >
             <img src={leftBtn} alt="Previous" />
           </button>
@@ -39,20 +83,36 @@ const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
             className={styles.navBtn}
             onClick={handleNext}
             style={{
-              opacity: currentIndex >= data.modules.length - 2 ? 0.3 : undefined,
-              cursor: currentIndex >= data.modules.length - 2 ? 'default' : 'pointer'
+              opacity: !canScrollRight ? 0.3 : 1,
+              cursor: !canScrollRight ? 'default' : 'pointer'
             }}
+            disabled={!canScrollRight}
           >
             <img src={rightBtn} alt="Next" />
+          </button>
+        </div>
+
+        {/* Mobile Navigation (Thin Arrows like Teachers component) */}
+        <div className={styles.mobileNavigation}>
+          <button
+            className={`${styles.mobileArrowButton} ${!canScrollLeft ? styles.hiddenArrow : ''}`}
+            onClick={handlePrev}
+            aria-label="Назад"
+          >
+            <img src={leftArrowIcon} alt="Назад" className={styles.arrowIcon} />
+          </button>
+          <button
+            className={`${styles.mobileArrowButton} ${!canScrollRight ? styles.hiddenArrow : ''}`}
+            onClick={handleNext}
+            aria-label="Вперед"
+          >
+            <img src={rightArrowIcon} alt="Вперед" className={styles.arrowIcon} />
           </button>
         </div>
       </div>
 
       <div className={styles.carouselWindow}>
-        <div
-          className={styles.carouselTrack}
-          style={{ transform: `translateX(-${currentIndex * (455 + 20)}px)` }}
-        >
+        <div className={styles.carouselTrack} ref={trackRef}>
           {data.modules.map((module) => (
             <div key={module.id} className={styles.card}>
               <h4 className={styles.cardTitle}>{module.title}</h4>
