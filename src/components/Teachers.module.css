@@ -300,14 +300,16 @@
   }
 
   .experience {
-    font-family: 'Stolzl Regular', sans-serif;
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     color: #ffffff;
     margin-bottom: calc(100vw * 8 / 375);
   }
 
   .descriptionList {
-    font-family: 'Stolzl Regular', sans-serif;
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     color: #ffffff;
     padding-left: calc(100vw * 16 / 375);

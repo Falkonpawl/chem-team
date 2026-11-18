@@ -8,8 +8,8 @@ import flaskIcon from '../assets/icons/колба.svg';
 const ClassSchedule: React.FC = () => {
   const maxIdx = scheduleData.length - 1;
 
-  // Desktop state starts at 11 класс (index 0)
-  const [desktopIndex, setDesktopIndex] = useState(0);
+  // Desktop state starts at 7 класс (index maxIdx = 4)
+  const [desktopIndex, setDesktopIndex] = useState(maxIdx);
 
   // Mobile state starts at 7 класс (index maxIdx = 4)
   const [mobileIndex, setMobileIndex] = useState(maxIdx);
@@ -29,12 +29,14 @@ const ClassSchedule: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Desktop handlers
-  const handleDesktopPrev = () => {
-    setDesktopIndex((prev) => Math.max(prev - 1, 0));
-  };
-  const handleDesktopNext = () => {
+  // Desktop handlers starting from 7 класс
+  // Left arrow: moves towards 7 класс (index increases)
+  const handleDesktopLeft = () => {
     setDesktopIndex((prev) => Math.min(prev + 1, maxIdx));
+  };
+  // Right arrow: moves towards 11 класс (index decreases)
+  const handleDesktopRight = () => {
+    setDesktopIndex((prev) => Math.max(prev - 1, 0));
   };
 
   // Mobile handlers (inverted scrolling starting from 7 класс)
@@ -64,27 +66,27 @@ const ClassSchedule: React.FC = () => {
           <div className={styles.navigation}>
             <button
               className={styles.navBtn}
-              onClick={handleDesktopNext}
+              onClick={handleDesktopLeft}
               style={{
-                opacity: desktopIndex === maxIdx ? 0.3 : undefined,
+                opacity: desktopIndex === maxIdx ? 0.3 : 1,
                 cursor: desktopIndex === maxIdx ? 'default' : 'pointer'
               }}
               disabled={desktopIndex === maxIdx}
-              aria-label="Уменьшить класс"
+              aria-label="Младший класс"
             >
-              <img src={leftBtn} alt="Decrease Class" />
+              <img src={leftBtn} alt="Previous Class" />
             </button>
             <button
               className={styles.navBtn}
-              onClick={handleDesktopPrev}
+              onClick={handleDesktopRight}
               style={{
-                opacity: desktopIndex === 0 ? 0.3 : undefined,
+                opacity: desktopIndex === 0 ? 0.3 : 1,
                 cursor: desktopIndex === 0 ? 'default' : 'pointer'
               }}
               disabled={desktopIndex === 0}
-              aria-label="Увеличить класс"
+              aria-label="Старший класс"
             >
-              <img src={rightBtn} alt="Increase Class" />
+              <img src={rightBtn} alt="Next Class" />
             </button>
           </div>
         </div>

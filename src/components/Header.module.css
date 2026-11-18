@@ -128,8 +128,9 @@
     position: absolute;
     top: calc(100vh * 68 / 812);
     left: calc(100vw * 20 / 375);
-    width: calc(100vw * 130 / 375);
-    height: calc(100vh * 30 / 812);
+    width: calc(100vw * 140 / 375);
+    height: calc(100vw * 32.4 / 375);
+    aspect-ratio: 190 / 44;
   }
 
   .logo {
@@ -192,8 +193,9 @@
     position: absolute;
     top: calc(100vh * 69 / 812);
     left: calc(100vw * 20 / 375);
-    width: calc(100vw * 130 / 375);
-    height: calc(100vh * 30 / 812);
+    width: calc(100vw * 140 / 375);
+    height: calc(100vw * 32.4 / 375);
+    aspect-ratio: 190 / 44;
   }
 
   .mobileMenuLogo {

@@ -148,12 +148,36 @@
   margin-bottom: 0;
 }
 
-/* Плавное уменьшение от 1023px до 769px */
+/* Плавное уменьшение от 1023px до 769px (Планшеты) */
 @media (max-width: 1023px) and (min-width: 769px) {
-  .container,
-  .carouselWindow {
+  .programsSection {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .container {
     width: 100%;
     max-width: 930px;
+    box-sizing: border-box;
+  }
+
+  .carouselWindow {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .carouselTrack {
+    scroll-snap-type: x mandatory;
+  }
+
+  .card {
+    scroll-snap-align: center;
+  }
+
+  .card:first-child {
+    scroll-snap-align: start;
   }
 }
 
@@ -168,6 +192,8 @@
   }
 
   .sectionTitle {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     margin-top: 0;
     margin-bottom: calc(100vh * 53 / 812);

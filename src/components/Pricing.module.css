@@ -421,7 +421,8 @@
   }
 
   .singlePriceContainer .priceLabel {
-    font-family: 'Stolzl Regular', sans-serif;
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     color: #BDE3F7;
     text-align: center;
@@ -443,7 +444,8 @@
   }
 
   .doublePriceContainer .priceLabel {
-    font-family: 'Stolzl Regular', sans-serif;
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     color: #BDE3F7;
     text-align: left;
@@ -475,6 +477,8 @@
   }
 
   .featuresList {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     margin: 0;
     padding-left: calc(100vw * 20 / 375);
     padding-right: calc(100vw * 20 / 375);

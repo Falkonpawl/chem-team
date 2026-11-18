@@ -91,6 +91,13 @@ const ArticlesHero: React.FC<ArticlesHeroProps> = ({ showBackButton = false }) =
           Интересно<br />знать!
         </h1>
 
+        <div className={styles.mascotWrapper}>
+          <img src={mascotImage} alt="Маскот Интересно знать" className={styles.image} />
+          <p className={styles.imageCaption}>
+            Посетите первое пробное<br />занятие бесплатно
+          </p>
+        </div>
+
         <div className={styles.leftContent}>
           <h2 className={styles.subtitle}>
             Запись в онлайн<br />школу по химии!
@@ -122,13 +129,6 @@ const ArticlesHero: React.FC<ArticlesHeroProps> = ({ showBackButton = false }) =
               />
             </div>
           </form>
-        </div>
-
-        <div className={styles.rightContent}>
-          <img src={mascotImage} alt="Маскот Интересно знать" className={styles.image} />
-          <p className={styles.imageCaption}>
-            Посетите первое пробное<br />занятие бесплатно
-          </p>
         </div>
       </div>
     </section>

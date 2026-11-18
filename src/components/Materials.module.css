@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  padding-bottom: 85px; /* Adding some padding at the bottom */
+  padding-bottom: 85px;
 }
 
 .section::before {
@@ -37,14 +37,14 @@
   color: #ffffff;
   text-align: right;
   margin: 0;
-  margin-top: 60px; /* Отсуп до слов материалы доверха 60 */
+  margin-top: 60px;
 }
 
 .list {
-  margin-top: 40px; /* После 40 (идут плашки) */
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Между плашками отступ 20 пикслей */
+  gap: 20px;
 }
 
 .card {
@@ -54,28 +54,26 @@
   display: flex;
   align-items: center;
   padding: 0 30px;
+  text-decoration: none;
 }
 
-.whiteCard:hover {
-  opacity: 0.5;
-}
-
+.whiteCard:hover,
 .transparentCard:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .whiteCard {
-  height: 40px; /* плашка высотой 40 */
-  background-color: #ffffff; /* белые */
-  border-radius: 100px; /* закругление 100 */
-  color: #233e98; /* Текст в случае белой плашки синий (исходя из изображения) */
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  color: #233e98;
 }
 
 .transparentCard {
-  height: 100px; /* плашка высотой 100 пикслей */
-  background-color: rgba(255, 255, 255, 0.2); /* белая с прозрачностью 20 */
-  border-radius: 30px; /* Закругление 30 */
-  color: #ffffff; /* в случае прозрачной белый (согласно логике контраста) */
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: #ffffff;
 }
 
 .cardTitle {
@@ -96,14 +94,14 @@
 }
 
 .whiteCard .arrowWrapper {
-  right: 30px; /* справа распологается на расстоянии в 30 пикслей */
+  right: 30px;
   top: 50%;
-  transform: translateY(-50%); /* посередине */
+  transform: translateY(-50%);
 }
 
 .transparentCard .arrowWrapper {
-  right: 30px; /* справа тоже 30 пикслей */
-  bottom: 30px; /* Внизу расстоянии 30 пикслей */
+  right: 30px;
+  bottom: 30px;
 }
 
 .whiteCard .cardTitle {
@@ -112,4 +110,94 @@
 
 .transparentCard .cardTitle {
   color: #ffffff;
+}
+
+/* Плавное уменьшение в диапазоне от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .section {
+    padding-bottom: calc(100vw * 127 / 375);
+  }
+
+  .section::before {
+    background-image: url('../assets/Паттерны/Вертикальные Full HD/Сон Менделеева/Сон Менделеева_М_сайт.svg');
+    opacity: 0.2; /* 20% прозрачности */
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: calc(100vw * 16 / 375);
+    margin-top: calc(100vw * 60 / 375);
+    margin-right: calc(100vw * 19 / 375);
+    margin-bottom: calc(100vw * 51 / 375);
+    text-align: right;
+  }
+
+  .list {
+    margin-top: 0;
+    gap: calc(100vw * 20 / 375);
+    align-items: center;
+  }
+
+  .card {
+    width: calc(100vw * 336 / 375);
+    margin: 0 auto;
+  }
+
+  .whiteCard {
+    height: calc(100vw * 40 / 375);
+    aspect-ratio: 336 / 40;
+    border-radius: 100px;
+    padding-left: calc(100vw * 24 / 375);
+    padding-right: calc(100vw * 45 / 375);
+    display: flex;
+    align-items: center;
+  }
+
+  .transparentCard {
+    height: calc(100vw * 100 / 375);
+    aspect-ratio: 336 / 100;
+    border-radius: calc(100vw * 30 / 375);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: calc(100vw * 24 / 375);
+    padding-right: calc(100vw * 45 / 375);
+    padding-top: calc(100vw * 18 / 375);
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .cardTitle {
+    font-size: calc(100vw * 14 / 375);
+  }
+
+  .arrowIcon {
+    width: calc(100vw * 15 / 375);
+    height: calc(100vw * 15 / 375);
+    object-fit: contain;
+  }
+
+  .whiteCard .arrowWrapper {
+    right: calc(100vw * 20 / 375);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .transparentCard .arrowWrapper {
+    right: calc(100vw * 20 / 375);
+    bottom: calc(100vw * 17 / 375);
+    top: auto;
+    transform: none;
+  }
 }

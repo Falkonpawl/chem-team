@@ -195,6 +195,10 @@
     box-sizing: border-box;
   }
 
+  .upButton {
+    right: 40px;
+  }
+
   .navSide {
     left: 50%;
   }
@@ -218,7 +222,7 @@
   .upButton {
     position: absolute;
     top: calc(100vh * 60 / 812);
-    right: calc(100vw * 36 / 375);
+    right: calc(100vw * 55 / 375);
     left: auto;
   }
 
@@ -239,6 +243,8 @@
   }
 
   .subtitle {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     padding-left: calc(100vw * 39 / 375);
     padding-right: calc(100vw * 36 / 375);

@@ -171,11 +171,15 @@
   }
 
   .text {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     margin-bottom: calc(100vh * 20 / 812);
   }
 
   .list {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
   }
 

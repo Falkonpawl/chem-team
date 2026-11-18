@@ -78,3 +78,67 @@
   margin-bottom: 60px;
   object-fit: cover;
 }
+
+/* Плавное уменьшение от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .contentSection {
+    background-image: url('../assets/Паттерны/Вертикальные Full HD/Молекула_голубая/Молекула_М_сайт.svg');
+    padding-bottom: calc(100vh * 80 / 812);
+  }
+
+  .container {
+    width: 100%;
+    padding-left: calc(100vw * 19 / 375);
+    padding-right: calc(100vw * 19 / 375);
+    box-sizing: border-box;
+  }
+
+  .headerLabel {
+    font-size: calc(100vw * 16 / 375);
+    margin-top: calc(100vh * 56 / 812);
+    margin-right: calc(100vw * 13 / 375);
+    margin-bottom: calc(100vh * 44 / 812);
+    text-align: right;
+  }
+
+  .mainTitle {
+    font-size: calc(100vw * 16 / 375);
+    margin-bottom: calc(100vh * 22 / 812);
+    line-height: 1.2;
+  }
+
+  .paragraph {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
+    font-size: calc(100vw * 12 / 375);
+    line-height: 1.4;
+    margin-bottom: calc(100vh * 16 / 812);
+  }
+
+  .subheader {
+    font-size: calc(100vw * 16 / 375);
+    margin-top: calc(100vh * 22 / 812);
+    margin-bottom: calc(100vh * 22 / 812);
+    line-height: 1.2;
+  }
+
+  .articleImage {
+    width: calc(100vw * 336 / 375);
+    max-width: 100%;
+    height: auto;
+    border-radius: calc(100vw * 20 / 375);
+    margin-top: calc(100vh * 45 / 812);
+    margin-bottom: calc(100vh * 45 / 812);
+    align-self: center;
+  }
+}

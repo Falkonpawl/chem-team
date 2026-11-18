@@ -16,7 +16,7 @@
 
 .backButton {
   position: absolute;
-  top: 18px; /* Отступ в 18 от верха */
+  top: 18px;
   left: 0;
   background: none;
   border: none;
@@ -105,9 +105,9 @@
   margin-top: 16px;
 }
 
-.rightContent {
+.mascotWrapper {
   position: absolute;
-  top: 120px; /* От верха находится 120 пикселя */
+  top: 120px;
   right: 0;
   display: flex;
   flex-direction: column;
@@ -116,7 +116,7 @@
 }
 
 .image {
-  width: 612px; /* 612*335 размер маскота */
+  width: 612px;
   height: 335px;
   object-fit: contain;
 }
@@ -128,4 +128,167 @@
   margin-top: 16px;
   text-align: right;
   line-height: 1.2;
+}
+
+/* Плавное уменьшение в диапазоне от 1023px до 769px */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .hero {
+    min-height: 520px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 930px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .backButton {
+    left: 20px;
+  }
+
+  .title {
+    right: 20px;
+    font-size: clamp(52px, 9vw, 96px);
+  }
+
+  .leftContent {
+    left: 20px;
+  }
+
+  .subtitle {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: clamp(30px, 5.5vw, 60px);
+  }
+
+  .mascotWrapper {
+    top: clamp(120px, 15vw, 160px);
+    right: 20px;
+  }
+
+  .image {
+    width: clamp(360px, 55vw, 612px);
+    height: auto;
+    aspect-ratio: 612 / 335;
+  }
+
+  .imageCaption {
+    font-size: clamp(13px, 1.5vw, 16px);
+  }
+}
+
+/* Мобильная версия для экранов 768px и меньше */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .container {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .backButton {
+    position: absolute;
+    top: 0;
+    left: calc(100vw * 19 / 375);
+    margin: 0;
+    font-size: calc(100vw * 16 / 375);
+    color: #233e98;
+    opacity: 0.5;
+    z-index: 30;
+  }
+
+  .title {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: calc(100vh * 28 / 812);
+    margin-right: calc(100vw * 24 / 375);
+    margin-left: auto;
+    font-family: 'Stolzl Regular', sans-serif;
+    font-weight: 400;
+    font-size: calc(100vw * 32 / 375);
+    line-height: 1.1;
+    color: #233E98;
+    text-align: right;
+  }
+
+  .mascotWrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: calc(100vh * 6 / 812);
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100vw * 338 / 375);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image {
+    width: calc(100vw * 338 / 375);
+    height: calc(100vw * 270 / 375);
+    aspect-ratio: 338 / 270;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .imageCaption {
+    position: relative;
+    margin-top: calc(100vh * 25 / 812);
+    margin-left: calc(100vw * 20 / 375);
+    margin-right: 0;
+    text-align: left;
+    font-family: 'Stolzl Regular', sans-serif;
+    font-size: calc(100vw * 16 / 375);
+    color: #233E98;
+    line-height: 1.2;
+  }
+
+  .leftContent {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-top: calc(100vh * 50 / 812);
+    margin-left: calc(100vw * 20 / 375);
+    margin-bottom: calc(100vh * 65 / 812);
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: calc(100vw * 22 / 375);
+  }
+
+  .input {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vw * 40 / 375);
+    border-radius: calc(100vw * 20 / 375);
+    padding: 0 calc(100vw * 20 / 375);
+    font-size: calc(100vw * 16 / 375);
+  }
+
+  .buttonWrapper {
+    margin-top: 0;
+  }
+
+  .buttonWrapper button {
+    width: calc(100vw * 265 / 375);
+    height: calc(100vw * 40 / 375);
+    border-radius: calc(100vw * 20 / 375);
+    font-size: calc(100vw * 16 / 375);
+  }
 }

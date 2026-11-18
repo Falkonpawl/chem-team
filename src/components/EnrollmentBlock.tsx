@@ -17,8 +17,12 @@ const EnrollmentBlock: React.FC = () => {
         <div className={styles.content}>
           <h2 className={styles.title}>
             Записывайтесь<br />
-            на курс в онлайн<br />
-            школу
+            на курс<br className={styles.mobileBr} />
+            <span className={styles.desktopSpace}> </span>в онлайн<br />
+            <span className={styles.lastLine}>
+              школу
+              <img src={logo} alt="Chem-Team" className={styles.mobileLogo} />
+            </span>
           </h2>
 
           <div className={styles.buttonWrapper}>
@@ -26,7 +30,7 @@ const EnrollmentBlock: React.FC = () => {
           </div>
         </div>
 
-        <img src={logo} alt="Chem-Team" className={styles.logo} />
+        <img src={logo} alt="Chem-Team" className={styles.desktopLogo} />
         <img src={mascot} alt="Бурный ученый" className={styles.mascot} />
       </div>
     </section>

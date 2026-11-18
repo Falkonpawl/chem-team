@@ -248,7 +248,7 @@
 
   .mobileClassBadge {
     width: calc(100vw * 337 / 375);
-    height: calc(100vh * 40 / 812);
+    height: calc(100vw * 40 / 375);
     border-radius: 100px;
     background-color: #233e98;
     margin: 0 auto;
@@ -273,8 +273,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(100vw * 38 / 375);
-    height: calc(100vw * 38 / 375);
+    width: calc(100vw * 39 / 375);
+    height: calc(100vw * 39 / 375);
+    flex-shrink: 0;
   }
 
   .mobileNavBtn:hover:not(:disabled) {
@@ -289,7 +290,8 @@
 
   .calendarStrip {
     width: calc(100vw * 335 / 375);
-    height: calc(100vh * 64 / 812);
+    height: calc(100vw * 64 / 375);
+    aspect-ratio: 335 / 64;
     border-radius: calc(100vw * 20 / 375);
     margin: 0 auto;
     margin-bottom: calc(100vh * 25 / 812);
@@ -337,6 +339,8 @@
   }
 
   .lessonItem {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     align-items: flex-start;
   }
@@ -348,7 +352,10 @@
 
   .lessonTime,
   .lessonDivider,
-  .lessonTitle {
+  .lessonTitle,
+  .lessonText {
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     line-height: 1.4;
   }

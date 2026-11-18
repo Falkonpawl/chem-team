@@ -100,7 +100,8 @@
 }
 
 .text {
-  font-family: 'Stolzl Book', sans-serif;
+  font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+  font-weight: 350;
   font-size: 16px;
   color: #233e98;
   margin: 0;
@@ -250,7 +251,8 @@
   }
 
   .mobileText {
-    font-family: 'Stolzl Book', sans-serif;
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12.5 / 375);
     color: #233e98;
     margin: 0;

@@ -201,8 +201,8 @@
 
   .image {
     width: calc(100vw * 335 / 375);
-    height: calc(100vh * 264 / 812);
-    aspect-ratio: auto;
+    height: calc(100vw * 264 / 375);
+    aspect-ratio: 335 / 264;
     object-fit: contain;
   }
 
@@ -234,12 +234,12 @@
   .form {
     display: flex;
     flex-direction: column;
-    gap: calc(100vh * 22 / 812);
+    gap: calc(100vw * 22 / 375);
   }
 
   .input {
     width: calc(100vw * 265 / 375);
-    height: calc(100vh * 40 / 812);
+    height: calc(100vw * 40 / 375);
     border-radius: calc(100vw * 20 / 375);
     padding: 0 calc(100vw * 20 / 375);
     font-size: calc(100vw * 16 / 375);
@@ -251,7 +251,7 @@
 
   .buttonWrapper button {
     width: calc(100vw * 265 / 375);
-    height: calc(100vh * 40 / 812);
+    height: calc(100vw * 40 / 375);
     border-radius: calc(100vw * 20 / 375);
     font-size: calc(100vw * 16 / 375);
   }

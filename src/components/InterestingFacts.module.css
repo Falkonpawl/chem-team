@@ -83,13 +83,15 @@
 /* Плавное уменьшение от 1023px до 769px */
 @media (max-width: 1023px) and (min-width: 769px) {
   .section {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
     margin-top: 30px;
   }
 
   .block {
     width: 100%;
     max-width: 760px;
-    padding: 0 20px;
     box-sizing: border-box;
   }
 }
@@ -162,7 +164,8 @@
   }
 
   .subtext {
-    font-family: 'Stolzl Regular', sans-serif;
+    font-family: 'Stolzl Book', 'Stolzl Regular', sans-serif;
+    font-weight: 350;
     font-size: calc(100vw * 12 / 375);
     color: #233e98;
     margin: 0;

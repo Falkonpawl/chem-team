@@ -9,6 +9,7 @@ import rightArrowIcon from '../assets/icons/rightthinArrow.svg';
 
 const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
   const trackRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -33,17 +34,63 @@ const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
     }
   }, []);
 
+  const scrollToCard = (index: number) => {
+    if (trackRef.current) {
+      const containerWidth = trackRef.current.clientWidth;
+      const isTablet = window.innerWidth <= 1023 && window.innerWidth >= 769;
+
+      if (isTablet) {
+        // Tablet mode: first card on start edge, subsequent cards in center
+        const cards = trackRef.current.children;
+        if (cards[index]) {
+          if (index === 0) {
+            trackRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            const card = cards[index] as HTMLElement;
+            const targetScroll = card.offsetLeft - containerWidth / 2 + card.offsetWidth / 2;
+            trackRef.current.scrollTo({ left: targetScroll, behavior: 'smooth' });
+          }
+        }
+      } else {
+        // Full Desktop (> 1023px): scroll by 2 cards at a time (930px per 2 cards)
+        const cardStep = 455 + 20; // card width + gap
+        const targetScroll = Math.floor(index / 2) * (cardStep * 2);
+        trackRef.current.scrollTo({ left: targetScroll, behavior: 'smooth' });
+      }
+    }
+  };
+
   const handlePrev = () => {
     if (trackRef.current) {
-      const step = trackRef.current.clientWidth * 0.8;
-      trackRef.current.scrollBy({ left: -step, behavior: 'smooth' });
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        // Mobile mode: scroll by 1 card at a time (264px width + 20px gap)
+        const mobileStep = window.innerWidth * (264 + 20) / 375;
+        trackRef.current.scrollBy({ left: -mobileStep, behavior: 'smooth' });
+      } else {
+        const isTablet = window.innerWidth <= 1023 && window.innerWidth >= 769;
+        const step = isTablet ? 1 : 2;
+        const nextIdx = Math.max(currentIndex - step, 0);
+        setCurrentIndex(nextIdx);
+        scrollToCard(nextIdx);
+      }
     }
   };
 
   const handleNext = () => {
     if (trackRef.current) {
-      const step = trackRef.current.clientWidth * 0.8;
-      trackRef.current.scrollBy({ left: step, behavior: 'smooth' });
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        // Mobile mode: scroll by 1 card at a time (264px width + 20px gap)
+        const mobileStep = window.innerWidth * (264 + 20) / 375;
+        trackRef.current.scrollBy({ left: mobileStep, behavior: 'smooth' });
+      } else {
+        const isTablet = window.innerWidth <= 1023 && window.innerWidth >= 769;
+        const step = isTablet ? 1 : 2;
+        const nextIdx = Math.min(currentIndex + step, data.modules.length - 1);
+        setCurrentIndex(nextIdx);
+        scrollToCard(nextIdx);
+      }
     }
   };
 
@@ -92,7 +139,7 @@ const ProgramClassBlock: React.FC<{ data: ClassProgram }> = ({ data }) => {
           </button>
         </div>
 
-        {/* Mobile Navigation (Thin Arrows like Teachers component) */}
+        {/* Mobile Navigation */}
         <div className={styles.mobileNavigation}>
           <button
             className={`${styles.mobileArrowButton} ${!canScrollLeft ? styles.hiddenArrow : ''}`}
